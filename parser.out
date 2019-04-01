@@ -1,0 +1,3916 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DP
+    MOD
+    POW
+    COMILLA
+
+Grammar
+
+Rule 0     S' -> startoo
+Rule 1     startoo -> STARTOO ID PUNTOYCOMA programa_1 MAIN bloque
+Rule 2     programa_1 -> VAR vars FUNC funcs
+Rule 3     funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+Rule 4     funcs -> vacio
+Rule 5     puntoNfx -> vacio
+Rule 6     puntoNfx1 -> vacio
+Rule 7     puntoNcont -> vacio
+Rule 8     func_1 -> tipo
+Rule 9     func_1 -> VOO
+Rule 10    func_2 -> tipo ID puntoNfx1 func_21
+Rule 11    func_2 -> vacio
+Rule 12    func_21 -> COMA tipo ID puntoNfx1 func_21
+Rule 13    func_21 -> vacio
+Rule 14    func_3 -> bloque_1
+Rule 15    func_3 -> vacio
+Rule 16    vars -> var_1
+Rule 17    vars -> vacio
+Rule 18    var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1
+Rule 19    var_1 -> vacio
+Rule 20    puntoN2 -> vacio
+Rule 21    constbool -> TRUEOO
+Rule 22    constbool -> FALSEOO
+Rule 23    tipo -> INTOO
+Rule 24    tipo -> DECOO
+Rule 25    tipo -> WORDOO
+Rule 26    tipo -> CHAROO
+Rule 27    tipo -> BOOL
+Rule 28    bloque -> LLAVEIZQ bloque_1 LLAVEDER
+Rule 29    bloque_1 -> estatuto bloque_1
+Rule 30    bloque_1 -> vacio
+Rule 31    estatuto -> llamada PUNTOYCOMA
+Rule 32    estatuto -> ciclo
+Rule 33    estatuto -> asignacion
+Rule 34    estatuto -> condicion
+Rule 35    estatuto -> writoo
+Rule 36    estatuto -> sort
+Rule 37    estatuto -> read
+Rule 38    estatuto -> save
+Rule 39    estatuto -> get
+Rule 40    estatuto -> retorno
+Rule 41    asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA
+Rule 42    asignacion_1 -> expresion
+Rule 43    asignacion_1 -> arreglo
+Rule 44    expresion -> conjunciones
+Rule 45    conjunciones -> expresioneslogicas puntoN9 conj_1
+Rule 46    puntoN9 -> vacio
+Rule 47    conj_1 -> AND puntoN3 conjunciones
+Rule 48    conj_1 -> OR puntoN3 conjunciones
+Rule 49    conj_1 -> vacio
+Rule 50    expresioneslogicas -> exp expresion_1
+Rule 51    puntoN8 -> vacio
+Rule 52    expresion_1 -> MAYORQUE puntoN3 exp puntoN8
+Rule 53    expresion_1 -> MENORQUE puntoN3 exp puntoN8
+Rule 54    expresion_1 -> DIFERENTE puntoN3 exp puntoN8
+Rule 55    expresion_1 -> MENORIGUAL puntoN3 exp puntoN8
+Rule 56    expresion_1 -> MAYORIGUAL puntoN3 exp puntoN8
+Rule 57    expresion_1 -> IGUALIGUAL puntoN3 exp puntoN8
+Rule 58    expresion_1 -> vacio
+Rule 59    writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA
+Rule 60    writoo_1 -> expresion
+Rule 61    exp -> termino puntoN4 exp_1
+Rule 62    puntoN4 -> vacio
+Rule 63    exp_1 -> SUMA puntoN3 exp
+Rule 64    exp_1 -> RESTA puntoN3 exp
+Rule 65    exp_1 -> vacio
+Rule 66    puntoN3 -> vacio
+Rule 67    condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA
+Rule 68    condicion_1 -> ORTHIS bloque
+Rule 69    condicion_1 -> vacio
+Rule 70    termino -> factor puntoN5 termino_1
+Rule 71    puntoN5 -> vacio
+Rule 72    termino_1 -> MULT puntoN3 termino
+Rule 73    termino_1 -> DIV puntoN3 termino
+Rule 74    termino_1 -> vacio
+Rule 75    factor -> factor_1
+Rule 76    factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7
+Rule 77    factor_1 -> varcte
+Rule 78    puntoN6 -> vacio
+Rule 79    puntoN7 -> vacio
+Rule 80    factor_2 -> SUMA
+Rule 81    factor_2 -> RESTA
+Rule 82    factor_2 -> vacio
+Rule 83    varcte -> var_id_validation
+Rule 84    varcte -> llamada
+Rule 85    varcte -> CTEINTOO
+Rule 86    varcte -> CTEDECOO
+Rule 87    varcte -> CTEWORDOO
+Rule 88    varcte -> CHAROO
+Rule 89    var_id_validation -> ID
+Rule 90    ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+Rule 91    incremento -> var_id_validation INCMAS exp
+Rule 92    incremento -> var_id_validation INCMENOS exp
+Rule 93    llamada -> ID PARIZQ llamada_1 PARDER
+Rule 94    llamada_1 -> expresion llamada_2
+Rule 95    llamada_1 -> arreglo llamada_2
+Rule 96    llamada_2 -> COMA llamada_1
+Rule 97    llamada_2 -> vacio
+Rule 98    retorno -> RETURNOO retorno_1 PUNTOYCOMA
+Rule 99    retorno_1 -> varcte
+Rule 100   retorno_1 -> expresion
+Rule 101   arreglo -> ARROO tipo CORCHIZQ INTOO CORCHDER
+Rule 102   vacio -> <empty>
+Rule 103   sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA
+Rule 104   read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA
+Rule 105   save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA
+Rule 106   save_3 -> var_id_validation
+Rule 107   save_3 -> CTEWORDOO
+Rule 108   get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA
+Rule 109   get_2 -> var_id_validation
+Rule 110   get_2 -> CTEWORDOO
+
+Terminals, with rules where they appear
+
+AND                  : 47
+ARROO                : 101
+BOOL                 : 27
+CHAROO               : 26 88
+COMA                 : 12 96 105 108
+COMILLA              : 
+CORCHDER             : 101
+CORCHIZQ             : 101
+CTEDECOO             : 86
+CTEINTOO             : 85
+CTEWORDOO            : 87 107 110
+DECOO                : 24
+DIFERENTE            : 54
+DIV                  : 73
+DOTHIS               : 67
+DP                   : 
+FALSEOO              : 22
+FUNC                 : 2
+GETOO                : 108
+ID                   : 1 3 10 12 18 89 93 103
+IF                   : 67
+IGUAL                : 41
+IGUALIGUAL           : 57
+INCMAS               : 91
+INCMENOS             : 92
+INTOO                : 23 101
+LLAVEDER             : 3 28
+LLAVEIZQ             : 3 28
+LOOP                 : 90
+MAIN                 : 1
+MAYORIGUAL           : 56
+MAYORQUE             : 52
+MENORIGUAL           : 55
+MENORQUE             : 53
+MOD                  : 
+MULT                 : 72
+OR                   : 48
+ORTHIS               : 68
+PARDER               : 3 59 67 76 90 93 103 104 105 108
+PARIZQ               : 3 59 67 76 90 93 103 104 105 108
+POW                  : 
+PUNTOYCOMA           : 1 18 31 41 59 67 90 90 98 103 104 105 108
+READOO               : 104
+RESTA                : 64 81
+RETURNOO             : 98
+SAVOO                : 105
+SORTOO               : 103
+STARTOO              : 1
+SUMA                 : 63 80
+TRUEOO               : 21
+VAR                  : 2 3
+VOO                  : 9
+WORDOO               : 25
+WRITEOO              : 59
+error                : 
+
+Nonterminals, with rules where they appear
+
+arreglo              : 43 95
+asignacion           : 33 90
+asignacion_1         : 41
+bloque               : 1 67 68 90
+bloque_1             : 14 28 29
+ciclo                : 32
+condicion            : 34
+condicion_1          : 67
+conj_1               : 45
+conjunciones         : 44 47 48
+constbool            : 
+estatuto             : 29
+exp                  : 50 52 53 54 55 56 57 63 64 91 92
+exp_1                : 61
+expresion            : 42 60 67 76 90 94 100 105
+expresion_1          : 50
+expresioneslogicas   : 45
+factor               : 70
+factor_1             : 75
+factor_2             : 
+func_1               : 3
+func_2               : 3
+func_21              : 10 12
+func_3               : 3
+funcs                : 2 3
+get                  : 39
+get_2                : 108
+incremento           : 90
+llamada              : 31 84
+llamada_1            : 93 96
+llamada_2            : 94 95
+programa_1           : 1
+puntoN2              : 18
+puntoN3              : 47 48 52 53 54 55 56 57 63 64 72 73
+puntoN4              : 61
+puntoN5              : 70
+puntoN6              : 76
+puntoN7              : 76
+puntoN8              : 52 53 54 55 56 57
+puntoN9              : 45
+puntoNcont           : 3
+puntoNfx             : 3
+puntoNfx1            : 10 12
+read                 : 37
+retorno              : 40
+retorno_1            : 98
+save                 : 38
+save_3               : 105
+sort                 : 36
+startoo              : 0
+termino              : 61 72 73
+termino_1            : 70
+tipo                 : 8 10 12 18 101
+vacio                : 4 5 6 7 11 13 15 17 19 20 30 46 49 51 58 62 65 66 69 71 74 78 79 82 97
+var_1                : 16 18
+var_id_validation    : 41 83 91 92 104 106 108 109
+varcte               : 77 99
+vars                 : 2 3
+writoo               : 35
+writoo_1             : 59
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . startoo
+    (1) startoo -> . STARTOO ID PUNTOYCOMA programa_1 MAIN bloque
+
+    STARTOO         shift and go to state 1
+
+    startoo                        shift and go to state 2
+
+state 1
+
+    (1) startoo -> STARTOO . ID PUNTOYCOMA programa_1 MAIN bloque
+
+    ID              shift and go to state 3
+
+
+state 2
+
+    (0) S' -> startoo .
+
+
+
+state 3
+
+    (1) startoo -> STARTOO ID . PUNTOYCOMA programa_1 MAIN bloque
+
+    PUNTOYCOMA      shift and go to state 4
+
+
+state 4
+
+    (1) startoo -> STARTOO ID PUNTOYCOMA . programa_1 MAIN bloque
+    (2) programa_1 -> . VAR vars FUNC funcs
+
+    VAR             shift and go to state 6
+
+    programa_1                     shift and go to state 5
+
+state 5
+
+    (1) startoo -> STARTOO ID PUNTOYCOMA programa_1 . MAIN bloque
+
+    MAIN            shift and go to state 7
+
+
+state 6
+
+    (2) programa_1 -> VAR . vars FUNC funcs
+    (16) vars -> . var_1
+    (17) vars -> . vacio
+    (18) var_1 -> . tipo ID puntoN2 PUNTOYCOMA var_1
+    (19) var_1 -> . vacio
+    (102) vacio -> .
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+
+    FUNC            reduce using rule 102 (vacio -> .)
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+
+    tipo                           shift and go to state 10
+    vars                           shift and go to state 11
+    vacio                          shift and go to state 12
+    var_1                          shift and go to state 16
+
+state 7
+
+    (1) startoo -> STARTOO ID PUNTOYCOMA programa_1 MAIN . bloque
+    (28) bloque -> . LLAVEIZQ bloque_1 LLAVEDER
+
+    LLAVEIZQ        shift and go to state 17
+
+    bloque                         shift and go to state 18
+
+state 8
+
+    (23) tipo -> INTOO .
+
+    ID              reduce using rule 23 (tipo -> INTOO .)
+    CORCHIZQ        reduce using rule 23 (tipo -> INTOO .)
+
+
+state 9
+
+    (25) tipo -> WORDOO .
+
+    ID              reduce using rule 25 (tipo -> WORDOO .)
+    CORCHIZQ        reduce using rule 25 (tipo -> WORDOO .)
+
+
+state 10
+
+    (18) var_1 -> tipo . ID puntoN2 PUNTOYCOMA var_1
+
+    ID              shift and go to state 19
+
+
+state 11
+
+    (2) programa_1 -> VAR vars . FUNC funcs
+
+    FUNC            shift and go to state 20
+
+
+state 12
+
+    (17) vars -> vacio .
+    (19) var_1 -> vacio .
+
+  ! reduce/reduce conflict for FUNC resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for ID resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for LOOP resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for IF resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for WRITEOO resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for SORTOO resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for READOO resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for SAVOO resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for GETOO resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for RETURNOO resolved using rule 17 (vars -> vacio .)
+  ! reduce/reduce conflict for LLAVEDER resolved using rule 17 (vars -> vacio .)
+    ID              reduce using rule 17 (vars -> vacio .)
+    LOOP            reduce using rule 17 (vars -> vacio .)
+    IF              reduce using rule 17 (vars -> vacio .)
+    WRITEOO         reduce using rule 17 (vars -> vacio .)
+    SORTOO          reduce using rule 17 (vars -> vacio .)
+    READOO          reduce using rule 17 (vars -> vacio .)
+    SAVOO           reduce using rule 17 (vars -> vacio .)
+    GETOO           reduce using rule 17 (vars -> vacio .)
+    RETURNOO        reduce using rule 17 (vars -> vacio .)
+    LLAVEDER        reduce using rule 17 (vars -> vacio .)
+    FUNC            reduce using rule 17 (vars -> vacio .)
+
+  ! FUNC            [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! ID              [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! LOOP            [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! IF              [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! WRITEOO         [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! SORTOO          [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! READOO          [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! SAVOO           [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! GETOO           [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! RETURNOO        [ reduce using rule 19 (var_1 -> vacio .) ]
+  ! LLAVEDER        [ reduce using rule 19 (var_1 -> vacio .) ]
+
+
+state 13
+
+    (26) tipo -> CHAROO .
+
+    ID              reduce using rule 26 (tipo -> CHAROO .)
+    CORCHIZQ        reduce using rule 26 (tipo -> CHAROO .)
+
+
+state 14
+
+    (27) tipo -> BOOL .
+
+    ID              reduce using rule 27 (tipo -> BOOL .)
+    CORCHIZQ        reduce using rule 27 (tipo -> BOOL .)
+
+
+state 15
+
+    (24) tipo -> DECOO .
+
+    ID              reduce using rule 24 (tipo -> DECOO .)
+    CORCHIZQ        reduce using rule 24 (tipo -> DECOO .)
+
+
+state 16
+
+    (16) vars -> var_1 .
+
+    ID              reduce using rule 16 (vars -> var_1 .)
+    LOOP            reduce using rule 16 (vars -> var_1 .)
+    IF              reduce using rule 16 (vars -> var_1 .)
+    WRITEOO         reduce using rule 16 (vars -> var_1 .)
+    SORTOO          reduce using rule 16 (vars -> var_1 .)
+    READOO          reduce using rule 16 (vars -> var_1 .)
+    SAVOO           reduce using rule 16 (vars -> var_1 .)
+    GETOO           reduce using rule 16 (vars -> var_1 .)
+    RETURNOO        reduce using rule 16 (vars -> var_1 .)
+    LLAVEDER        reduce using rule 16 (vars -> var_1 .)
+    FUNC            reduce using rule 16 (vars -> var_1 .)
+
+
+state 17
+
+    (28) bloque -> LLAVEIZQ . bloque_1 LLAVEDER
+    (29) bloque_1 -> . estatuto bloque_1
+    (30) bloque_1 -> . vacio
+    (31) estatuto -> . llamada PUNTOYCOMA
+    (32) estatuto -> . ciclo
+    (33) estatuto -> . asignacion
+    (34) estatuto -> . condicion
+    (35) estatuto -> . writoo
+    (36) estatuto -> . sort
+    (37) estatuto -> . read
+    (38) estatuto -> . save
+    (39) estatuto -> . get
+    (40) estatuto -> . retorno
+    (102) vacio -> .
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+    (90) ciclo -> . LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+    (41) asignacion -> . var_id_validation IGUAL asignacion_1 PUNTOYCOMA
+    (67) condicion -> . IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA
+    (59) writoo -> . WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA
+    (103) sort -> . SORTOO PARIZQ ID PARDER PUNTOYCOMA
+    (104) read -> . READOO PARIZQ var_id_validation PARDER PUNTOYCOMA
+    (105) save -> . SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA
+    (108) get -> . GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA
+    (98) retorno -> . RETURNOO retorno_1 PUNTOYCOMA
+    (89) var_id_validation -> . ID
+
+    LLAVEDER        reduce using rule 102 (vacio -> .)
+    ID              shift and go to state 37
+    LOOP            shift and go to state 42
+    IF              shift and go to state 38
+    WRITEOO         shift and go to state 23
+    SORTOO          shift and go to state 21
+    READOO          shift and go to state 24
+    SAVOO           shift and go to state 43
+    GETOO           shift and go to state 39
+    RETURNOO        shift and go to state 36
+
+    writoo                         shift and go to state 22
+    ciclo                          shift and go to state 25
+    var_id_validation              shift and go to state 26
+    estatuto                       shift and go to state 27
+    llamada                        shift and go to state 28
+    condicion                      shift and go to state 29
+    retorno                        shift and go to state 30
+    save                           shift and go to state 31
+    sort                           shift and go to state 32
+    get                            shift and go to state 33
+    read                           shift and go to state 34
+    bloque_1                       shift and go to state 35
+    asignacion                     shift and go to state 40
+    vacio                          shift and go to state 41
+
+state 18
+
+    (1) startoo -> STARTOO ID PUNTOYCOMA programa_1 MAIN bloque .
+
+    $end            reduce using rule 1 (startoo -> STARTOO ID PUNTOYCOMA programa_1 MAIN bloque .)
+
+
+state 19
+
+    (18) var_1 -> tipo ID . puntoN2 PUNTOYCOMA var_1
+    (20) puntoN2 -> . vacio
+    (102) vacio -> .
+
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+
+    puntoN2                        shift and go to state 44
+    vacio                          shift and go to state 45
+
+state 20
+
+    (2) programa_1 -> VAR vars FUNC . funcs
+    (3) funcs -> . func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+    (4) funcs -> . vacio
+    (8) func_1 -> . tipo
+    (9) func_1 -> . VOO
+    (102) vacio -> .
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+
+    VOO             shift and go to state 49
+    MAIN            reduce using rule 102 (vacio -> .)
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+
+    funcs                          shift and go to state 46
+    tipo                           shift and go to state 47
+    func_1                         shift and go to state 48
+    vacio                          shift and go to state 50
+
+state 21
+
+    (103) sort -> SORTOO . PARIZQ ID PARDER PUNTOYCOMA
+
+    PARIZQ          shift and go to state 51
+
+
+state 22
+
+    (35) estatuto -> writoo .
+
+    ID              reduce using rule 35 (estatuto -> writoo .)
+    LOOP            reduce using rule 35 (estatuto -> writoo .)
+    IF              reduce using rule 35 (estatuto -> writoo .)
+    WRITEOO         reduce using rule 35 (estatuto -> writoo .)
+    SORTOO          reduce using rule 35 (estatuto -> writoo .)
+    READOO          reduce using rule 35 (estatuto -> writoo .)
+    SAVOO           reduce using rule 35 (estatuto -> writoo .)
+    GETOO           reduce using rule 35 (estatuto -> writoo .)
+    RETURNOO        reduce using rule 35 (estatuto -> writoo .)
+    LLAVEDER        reduce using rule 35 (estatuto -> writoo .)
+
+
+state 23
+
+    (59) writoo -> WRITEOO . PARIZQ writoo_1 PARDER PUNTOYCOMA
+
+    PARIZQ          shift and go to state 52
+
+
+state 24
+
+    (104) read -> READOO . PARIZQ var_id_validation PARDER PUNTOYCOMA
+
+    PARIZQ          shift and go to state 53
+
+
+state 25
+
+    (32) estatuto -> ciclo .
+
+    ID              reduce using rule 32 (estatuto -> ciclo .)
+    LOOP            reduce using rule 32 (estatuto -> ciclo .)
+    IF              reduce using rule 32 (estatuto -> ciclo .)
+    WRITEOO         reduce using rule 32 (estatuto -> ciclo .)
+    SORTOO          reduce using rule 32 (estatuto -> ciclo .)
+    READOO          reduce using rule 32 (estatuto -> ciclo .)
+    SAVOO           reduce using rule 32 (estatuto -> ciclo .)
+    GETOO           reduce using rule 32 (estatuto -> ciclo .)
+    RETURNOO        reduce using rule 32 (estatuto -> ciclo .)
+    LLAVEDER        reduce using rule 32 (estatuto -> ciclo .)
+
+
+state 26
+
+    (41) asignacion -> var_id_validation . IGUAL asignacion_1 PUNTOYCOMA
+
+    IGUAL           shift and go to state 54
+
+
+state 27
+
+    (29) bloque_1 -> estatuto . bloque_1
+    (29) bloque_1 -> . estatuto bloque_1
+    (30) bloque_1 -> . vacio
+    (31) estatuto -> . llamada PUNTOYCOMA
+    (32) estatuto -> . ciclo
+    (33) estatuto -> . asignacion
+    (34) estatuto -> . condicion
+    (35) estatuto -> . writoo
+    (36) estatuto -> . sort
+    (37) estatuto -> . read
+    (38) estatuto -> . save
+    (39) estatuto -> . get
+    (40) estatuto -> . retorno
+    (102) vacio -> .
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+    (90) ciclo -> . LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+    (41) asignacion -> . var_id_validation IGUAL asignacion_1 PUNTOYCOMA
+    (67) condicion -> . IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA
+    (59) writoo -> . WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA
+    (103) sort -> . SORTOO PARIZQ ID PARDER PUNTOYCOMA
+    (104) read -> . READOO PARIZQ var_id_validation PARDER PUNTOYCOMA
+    (105) save -> . SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA
+    (108) get -> . GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA
+    (98) retorno -> . RETURNOO retorno_1 PUNTOYCOMA
+    (89) var_id_validation -> . ID
+
+    LLAVEDER        reduce using rule 102 (vacio -> .)
+    ID              shift and go to state 37
+    LOOP            shift and go to state 42
+    IF              shift and go to state 38
+    WRITEOO         shift and go to state 23
+    SORTOO          shift and go to state 21
+    READOO          shift and go to state 24
+    SAVOO           shift and go to state 43
+    GETOO           shift and go to state 39
+    RETURNOO        shift and go to state 36
+
+    writoo                         shift and go to state 22
+    ciclo                          shift and go to state 25
+    var_id_validation              shift and go to state 26
+    estatuto                       shift and go to state 27
+    llamada                        shift and go to state 28
+    condicion                      shift and go to state 29
+    retorno                        shift and go to state 30
+    save                           shift and go to state 31
+    sort                           shift and go to state 32
+    get                            shift and go to state 33
+    read                           shift and go to state 34
+    bloque_1                       shift and go to state 55
+    asignacion                     shift and go to state 40
+    vacio                          shift and go to state 41
+
+state 28
+
+    (31) estatuto -> llamada . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 56
+
+
+state 29
+
+    (34) estatuto -> condicion .
+
+    ID              reduce using rule 34 (estatuto -> condicion .)
+    LOOP            reduce using rule 34 (estatuto -> condicion .)
+    IF              reduce using rule 34 (estatuto -> condicion .)
+    WRITEOO         reduce using rule 34 (estatuto -> condicion .)
+    SORTOO          reduce using rule 34 (estatuto -> condicion .)
+    READOO          reduce using rule 34 (estatuto -> condicion .)
+    SAVOO           reduce using rule 34 (estatuto -> condicion .)
+    GETOO           reduce using rule 34 (estatuto -> condicion .)
+    RETURNOO        reduce using rule 34 (estatuto -> condicion .)
+    LLAVEDER        reduce using rule 34 (estatuto -> condicion .)
+
+
+state 30
+
+    (40) estatuto -> retorno .
+
+    ID              reduce using rule 40 (estatuto -> retorno .)
+    LOOP            reduce using rule 40 (estatuto -> retorno .)
+    IF              reduce using rule 40 (estatuto -> retorno .)
+    WRITEOO         reduce using rule 40 (estatuto -> retorno .)
+    SORTOO          reduce using rule 40 (estatuto -> retorno .)
+    READOO          reduce using rule 40 (estatuto -> retorno .)
+    SAVOO           reduce using rule 40 (estatuto -> retorno .)
+    GETOO           reduce using rule 40 (estatuto -> retorno .)
+    RETURNOO        reduce using rule 40 (estatuto -> retorno .)
+    LLAVEDER        reduce using rule 40 (estatuto -> retorno .)
+
+
+state 31
+
+    (38) estatuto -> save .
+
+    ID              reduce using rule 38 (estatuto -> save .)
+    LOOP            reduce using rule 38 (estatuto -> save .)
+    IF              reduce using rule 38 (estatuto -> save .)
+    WRITEOO         reduce using rule 38 (estatuto -> save .)
+    SORTOO          reduce using rule 38 (estatuto -> save .)
+    READOO          reduce using rule 38 (estatuto -> save .)
+    SAVOO           reduce using rule 38 (estatuto -> save .)
+    GETOO           reduce using rule 38 (estatuto -> save .)
+    RETURNOO        reduce using rule 38 (estatuto -> save .)
+    LLAVEDER        reduce using rule 38 (estatuto -> save .)
+
+
+state 32
+
+    (36) estatuto -> sort .
+
+    ID              reduce using rule 36 (estatuto -> sort .)
+    LOOP            reduce using rule 36 (estatuto -> sort .)
+    IF              reduce using rule 36 (estatuto -> sort .)
+    WRITEOO         reduce using rule 36 (estatuto -> sort .)
+    SORTOO          reduce using rule 36 (estatuto -> sort .)
+    READOO          reduce using rule 36 (estatuto -> sort .)
+    SAVOO           reduce using rule 36 (estatuto -> sort .)
+    GETOO           reduce using rule 36 (estatuto -> sort .)
+    RETURNOO        reduce using rule 36 (estatuto -> sort .)
+    LLAVEDER        reduce using rule 36 (estatuto -> sort .)
+
+
+state 33
+
+    (39) estatuto -> get .
+
+    ID              reduce using rule 39 (estatuto -> get .)
+    LOOP            reduce using rule 39 (estatuto -> get .)
+    IF              reduce using rule 39 (estatuto -> get .)
+    WRITEOO         reduce using rule 39 (estatuto -> get .)
+    SORTOO          reduce using rule 39 (estatuto -> get .)
+    READOO          reduce using rule 39 (estatuto -> get .)
+    SAVOO           reduce using rule 39 (estatuto -> get .)
+    GETOO           reduce using rule 39 (estatuto -> get .)
+    RETURNOO        reduce using rule 39 (estatuto -> get .)
+    LLAVEDER        reduce using rule 39 (estatuto -> get .)
+
+
+state 34
+
+    (37) estatuto -> read .
+
+    ID              reduce using rule 37 (estatuto -> read .)
+    LOOP            reduce using rule 37 (estatuto -> read .)
+    IF              reduce using rule 37 (estatuto -> read .)
+    WRITEOO         reduce using rule 37 (estatuto -> read .)
+    SORTOO          reduce using rule 37 (estatuto -> read .)
+    READOO          reduce using rule 37 (estatuto -> read .)
+    SAVOO           reduce using rule 37 (estatuto -> read .)
+    GETOO           reduce using rule 37 (estatuto -> read .)
+    RETURNOO        reduce using rule 37 (estatuto -> read .)
+    LLAVEDER        reduce using rule 37 (estatuto -> read .)
+
+
+state 35
+
+    (28) bloque -> LLAVEIZQ bloque_1 . LLAVEDER
+
+    LLAVEDER        shift and go to state 57
+
+
+state 36
+
+    (98) retorno -> RETURNOO . retorno_1 PUNTOYCOMA
+    (99) retorno_1 -> . varcte
+    (100) retorno_1 -> . expresion
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (44) expresion -> . conjunciones
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+    PARIZQ          shift and go to state 59
+
+    expresion                      shift and go to state 72
+    conjunciones                   shift and go to state 61
+    varcte                         shift and go to state 63
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 73
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+    retorno_1                      shift and go to state 71
+
+state 37
+
+    (93) llamada -> ID . PARIZQ llamada_1 PARDER
+    (89) var_id_validation -> ID .
+
+    PARIZQ          shift and go to state 75
+    IGUAL           reduce using rule 89 (var_id_validation -> ID .)
+
+
+state 38
+
+    (67) condicion -> IF . PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA
+
+    PARIZQ          shift and go to state 76
+
+
+state 39
+
+    (108) get -> GETOO . PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA
+
+    PARIZQ          shift and go to state 77
+
+
+state 40
+
+    (33) estatuto -> asignacion .
+
+    ID              reduce using rule 33 (estatuto -> asignacion .)
+    LOOP            reduce using rule 33 (estatuto -> asignacion .)
+    IF              reduce using rule 33 (estatuto -> asignacion .)
+    WRITEOO         reduce using rule 33 (estatuto -> asignacion .)
+    SORTOO          reduce using rule 33 (estatuto -> asignacion .)
+    READOO          reduce using rule 33 (estatuto -> asignacion .)
+    SAVOO           reduce using rule 33 (estatuto -> asignacion .)
+    GETOO           reduce using rule 33 (estatuto -> asignacion .)
+    RETURNOO        reduce using rule 33 (estatuto -> asignacion .)
+    LLAVEDER        reduce using rule 33 (estatuto -> asignacion .)
+
+
+state 41
+
+    (30) bloque_1 -> vacio .
+
+    LLAVEDER        reduce using rule 30 (bloque_1 -> vacio .)
+
+
+state 42
+
+    (90) ciclo -> LOOP . PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+
+    PARIZQ          shift and go to state 78
+
+
+state 43
+
+    (105) save -> SAVOO . PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA
+
+    PARIZQ          shift and go to state 79
+
+
+state 44
+
+    (18) var_1 -> tipo ID puntoN2 . PUNTOYCOMA var_1
+
+    PUNTOYCOMA      shift and go to state 80
+
+
+state 45
+
+    (20) puntoN2 -> vacio .
+
+    PUNTOYCOMA      reduce using rule 20 (puntoN2 -> vacio .)
+
+
+state 46
+
+    (2) programa_1 -> VAR vars FUNC funcs .
+
+    MAIN            reduce using rule 2 (programa_1 -> VAR vars FUNC funcs .)
+
+
+state 47
+
+    (8) func_1 -> tipo .
+
+    ID              reduce using rule 8 (func_1 -> tipo .)
+
+
+state 48
+
+    (3) funcs -> func_1 . ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+
+    ID              shift and go to state 81
+
+
+state 49
+
+    (9) func_1 -> VOO .
+
+    ID              reduce using rule 9 (func_1 -> VOO .)
+
+
+state 50
+
+    (4) funcs -> vacio .
+
+    MAIN            reduce using rule 4 (funcs -> vacio .)
+
+
+state 51
+
+    (103) sort -> SORTOO PARIZQ . ID PARDER PUNTOYCOMA
+
+    ID              shift and go to state 82
+
+
+state 52
+
+    (59) writoo -> WRITEOO PARIZQ . writoo_1 PARDER PUNTOYCOMA
+    (60) writoo_1 -> . expresion
+    (44) expresion -> . conjunciones
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    expresion                      shift and go to state 85
+    conjunciones                   shift and go to state 61
+    writoo_1                       shift and go to state 84
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 73
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+    varcte                         shift and go to state 83
+
+state 53
+
+    (104) read -> READOO PARIZQ . var_id_validation PARDER PUNTOYCOMA
+    (89) var_id_validation -> . ID
+
+    ID              shift and go to state 87
+
+    var_id_validation              shift and go to state 86
+
+state 54
+
+    (41) asignacion -> var_id_validation IGUAL . asignacion_1 PUNTOYCOMA
+    (42) asignacion_1 -> . expresion
+    (43) asignacion_1 -> . arreglo
+    (44) expresion -> . conjunciones
+    (101) arreglo -> . ARROO tipo CORCHIZQ INTOO CORCHDER
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    ARROO           shift and go to state 90
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    arreglo                        shift and go to state 88
+    termino                        shift and go to state 58
+    factor_1                       shift and go to state 60
+    conjunciones                   shift and go to state 61
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    asignacion_1                   shift and go to state 89
+    llamada                        shift and go to state 66
+    factor                         shift and go to state 67
+    expresion                      shift and go to state 91
+    exp                            shift and go to state 73
+
+state 55
+
+    (29) bloque_1 -> estatuto bloque_1 .
+
+    LLAVEDER        reduce using rule 29 (bloque_1 -> estatuto bloque_1 .)
+
+
+state 56
+
+    (31) estatuto -> llamada PUNTOYCOMA .
+
+    ID              reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    LOOP            reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    IF              reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    WRITEOO         reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    SORTOO          reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    READOO          reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    SAVOO           reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    GETOO           reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    RETURNOO        reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 31 (estatuto -> llamada PUNTOYCOMA .)
+
+
+state 57
+
+    (28) bloque -> LLAVEIZQ bloque_1 LLAVEDER .
+
+    ORTHIS          reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    PUNTOYCOMA      reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    $end            reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    ID              reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    LOOP            reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    IF              reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    WRITEOO         reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    SORTOO          reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    READOO          reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    SAVOO           reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    GETOO           reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    RETURNOO        reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+    LLAVEDER        reduce using rule 28 (bloque -> LLAVEIZQ bloque_1 LLAVEDER .)
+
+
+state 58
+
+    (61) exp -> termino . puntoN4 exp_1
+    (62) puntoN4 -> . vacio
+    (102) vacio -> .
+
+    SUMA            reduce using rule 102 (vacio -> .)
+    RESTA           reduce using rule 102 (vacio -> .)
+    MAYORQUE        reduce using rule 102 (vacio -> .)
+    MENORQUE        reduce using rule 102 (vacio -> .)
+    DIFERENTE       reduce using rule 102 (vacio -> .)
+    MENORIGUAL      reduce using rule 102 (vacio -> .)
+    MAYORIGUAL      reduce using rule 102 (vacio -> .)
+    IGUALIGUAL      reduce using rule 102 (vacio -> .)
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    puntoN4                        shift and go to state 92
+    vacio                          shift and go to state 93
+
+state 59
+
+    (76) factor_1 -> PARIZQ . puntoN6 expresion PARDER puntoN7
+    (78) puntoN6 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    puntoN6                        shift and go to state 94
+    vacio                          shift and go to state 95
+
+state 60
+
+    (75) factor -> factor_1 .
+
+    MULT            reduce using rule 75 (factor -> factor_1 .)
+    DIV             reduce using rule 75 (factor -> factor_1 .)
+    SUMA            reduce using rule 75 (factor -> factor_1 .)
+    RESTA           reduce using rule 75 (factor -> factor_1 .)
+    MAYORQUE        reduce using rule 75 (factor -> factor_1 .)
+    MENORQUE        reduce using rule 75 (factor -> factor_1 .)
+    DIFERENTE       reduce using rule 75 (factor -> factor_1 .)
+    MENORIGUAL      reduce using rule 75 (factor -> factor_1 .)
+    MAYORIGUAL      reduce using rule 75 (factor -> factor_1 .)
+    IGUALIGUAL      reduce using rule 75 (factor -> factor_1 .)
+    AND             reduce using rule 75 (factor -> factor_1 .)
+    OR              reduce using rule 75 (factor -> factor_1 .)
+    PUNTOYCOMA      reduce using rule 75 (factor -> factor_1 .)
+    PARDER          reduce using rule 75 (factor -> factor_1 .)
+    COMA            reduce using rule 75 (factor -> factor_1 .)
+
+
+state 61
+
+    (44) expresion -> conjunciones .
+
+    COMA            reduce using rule 44 (expresion -> conjunciones .)
+    PARDER          reduce using rule 44 (expresion -> conjunciones .)
+    PUNTOYCOMA      reduce using rule 44 (expresion -> conjunciones .)
+
+
+state 62
+
+    (86) varcte -> CTEDECOO .
+
+    MULT            reduce using rule 86 (varcte -> CTEDECOO .)
+    DIV             reduce using rule 86 (varcte -> CTEDECOO .)
+    SUMA            reduce using rule 86 (varcte -> CTEDECOO .)
+    RESTA           reduce using rule 86 (varcte -> CTEDECOO .)
+    PUNTOYCOMA      reduce using rule 86 (varcte -> CTEDECOO .)
+    MAYORQUE        reduce using rule 86 (varcte -> CTEDECOO .)
+    MENORQUE        reduce using rule 86 (varcte -> CTEDECOO .)
+    DIFERENTE       reduce using rule 86 (varcte -> CTEDECOO .)
+    MENORIGUAL      reduce using rule 86 (varcte -> CTEDECOO .)
+    MAYORIGUAL      reduce using rule 86 (varcte -> CTEDECOO .)
+    IGUALIGUAL      reduce using rule 86 (varcte -> CTEDECOO .)
+    AND             reduce using rule 86 (varcte -> CTEDECOO .)
+    OR              reduce using rule 86 (varcte -> CTEDECOO .)
+    COMA            reduce using rule 86 (varcte -> CTEDECOO .)
+    PARDER          reduce using rule 86 (varcte -> CTEDECOO .)
+
+
+state 63
+
+    (99) retorno_1 -> varcte .
+    (77) factor_1 -> varcte .
+
+  ! reduce/reduce conflict for PUNTOYCOMA resolved using rule 77 (factor_1 -> varcte .)
+    MULT            reduce using rule 77 (factor_1 -> varcte .)
+    DIV             reduce using rule 77 (factor_1 -> varcte .)
+    SUMA            reduce using rule 77 (factor_1 -> varcte .)
+    RESTA           reduce using rule 77 (factor_1 -> varcte .)
+    MAYORQUE        reduce using rule 77 (factor_1 -> varcte .)
+    MENORQUE        reduce using rule 77 (factor_1 -> varcte .)
+    DIFERENTE       reduce using rule 77 (factor_1 -> varcte .)
+    MENORIGUAL      reduce using rule 77 (factor_1 -> varcte .)
+    MAYORIGUAL      reduce using rule 77 (factor_1 -> varcte .)
+    IGUALIGUAL      reduce using rule 77 (factor_1 -> varcte .)
+    AND             reduce using rule 77 (factor_1 -> varcte .)
+    OR              reduce using rule 77 (factor_1 -> varcte .)
+    PUNTOYCOMA      reduce using rule 77 (factor_1 -> varcte .)
+
+  ! PUNTOYCOMA      [ reduce using rule 99 (retorno_1 -> varcte .) ]
+
+
+state 64
+
+    (83) varcte -> var_id_validation .
+
+    MULT            reduce using rule 83 (varcte -> var_id_validation .)
+    DIV             reduce using rule 83 (varcte -> var_id_validation .)
+    SUMA            reduce using rule 83 (varcte -> var_id_validation .)
+    RESTA           reduce using rule 83 (varcte -> var_id_validation .)
+    PUNTOYCOMA      reduce using rule 83 (varcte -> var_id_validation .)
+    MAYORQUE        reduce using rule 83 (varcte -> var_id_validation .)
+    MENORQUE        reduce using rule 83 (varcte -> var_id_validation .)
+    DIFERENTE       reduce using rule 83 (varcte -> var_id_validation .)
+    MENORIGUAL      reduce using rule 83 (varcte -> var_id_validation .)
+    MAYORIGUAL      reduce using rule 83 (varcte -> var_id_validation .)
+    IGUALIGUAL      reduce using rule 83 (varcte -> var_id_validation .)
+    AND             reduce using rule 83 (varcte -> var_id_validation .)
+    OR              reduce using rule 83 (varcte -> var_id_validation .)
+    COMA            reduce using rule 83 (varcte -> var_id_validation .)
+    PARDER          reduce using rule 83 (varcte -> var_id_validation .)
+
+
+state 65
+
+    (45) conjunciones -> expresioneslogicas . puntoN9 conj_1
+    (46) puntoN9 -> . vacio
+    (102) vacio -> .
+
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    puntoN9                        shift and go to state 96
+    vacio                          shift and go to state 97
+
+state 66
+
+    (84) varcte -> llamada .
+
+    MULT            reduce using rule 84 (varcte -> llamada .)
+    DIV             reduce using rule 84 (varcte -> llamada .)
+    SUMA            reduce using rule 84 (varcte -> llamada .)
+    RESTA           reduce using rule 84 (varcte -> llamada .)
+    PUNTOYCOMA      reduce using rule 84 (varcte -> llamada .)
+    MAYORQUE        reduce using rule 84 (varcte -> llamada .)
+    MENORQUE        reduce using rule 84 (varcte -> llamada .)
+    DIFERENTE       reduce using rule 84 (varcte -> llamada .)
+    MENORIGUAL      reduce using rule 84 (varcte -> llamada .)
+    MAYORIGUAL      reduce using rule 84 (varcte -> llamada .)
+    IGUALIGUAL      reduce using rule 84 (varcte -> llamada .)
+    AND             reduce using rule 84 (varcte -> llamada .)
+    OR              reduce using rule 84 (varcte -> llamada .)
+    COMA            reduce using rule 84 (varcte -> llamada .)
+    PARDER          reduce using rule 84 (varcte -> llamada .)
+
+
+state 67
+
+    (70) termino -> factor . puntoN5 termino_1
+    (71) puntoN5 -> . vacio
+    (102) vacio -> .
+
+    MULT            reduce using rule 102 (vacio -> .)
+    DIV             reduce using rule 102 (vacio -> .)
+    SUMA            reduce using rule 102 (vacio -> .)
+    RESTA           reduce using rule 102 (vacio -> .)
+    MAYORQUE        reduce using rule 102 (vacio -> .)
+    MENORQUE        reduce using rule 102 (vacio -> .)
+    DIFERENTE       reduce using rule 102 (vacio -> .)
+    MENORIGUAL      reduce using rule 102 (vacio -> .)
+    MAYORIGUAL      reduce using rule 102 (vacio -> .)
+    IGUALIGUAL      reduce using rule 102 (vacio -> .)
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    puntoN5                        shift and go to state 98
+    vacio                          shift and go to state 99
+
+state 68
+
+    (88) varcte -> CHAROO .
+
+    MULT            reduce using rule 88 (varcte -> CHAROO .)
+    DIV             reduce using rule 88 (varcte -> CHAROO .)
+    SUMA            reduce using rule 88 (varcte -> CHAROO .)
+    RESTA           reduce using rule 88 (varcte -> CHAROO .)
+    PUNTOYCOMA      reduce using rule 88 (varcte -> CHAROO .)
+    MAYORQUE        reduce using rule 88 (varcte -> CHAROO .)
+    MENORQUE        reduce using rule 88 (varcte -> CHAROO .)
+    DIFERENTE       reduce using rule 88 (varcte -> CHAROO .)
+    MENORIGUAL      reduce using rule 88 (varcte -> CHAROO .)
+    MAYORIGUAL      reduce using rule 88 (varcte -> CHAROO .)
+    IGUALIGUAL      reduce using rule 88 (varcte -> CHAROO .)
+    AND             reduce using rule 88 (varcte -> CHAROO .)
+    OR              reduce using rule 88 (varcte -> CHAROO .)
+    COMA            reduce using rule 88 (varcte -> CHAROO .)
+    PARDER          reduce using rule 88 (varcte -> CHAROO .)
+
+
+state 69
+
+    (87) varcte -> CTEWORDOO .
+
+    MULT            reduce using rule 87 (varcte -> CTEWORDOO .)
+    DIV             reduce using rule 87 (varcte -> CTEWORDOO .)
+    SUMA            reduce using rule 87 (varcte -> CTEWORDOO .)
+    RESTA           reduce using rule 87 (varcte -> CTEWORDOO .)
+    PUNTOYCOMA      reduce using rule 87 (varcte -> CTEWORDOO .)
+    MAYORQUE        reduce using rule 87 (varcte -> CTEWORDOO .)
+    MENORQUE        reduce using rule 87 (varcte -> CTEWORDOO .)
+    DIFERENTE       reduce using rule 87 (varcte -> CTEWORDOO .)
+    MENORIGUAL      reduce using rule 87 (varcte -> CTEWORDOO .)
+    MAYORIGUAL      reduce using rule 87 (varcte -> CTEWORDOO .)
+    IGUALIGUAL      reduce using rule 87 (varcte -> CTEWORDOO .)
+    AND             reduce using rule 87 (varcte -> CTEWORDOO .)
+    OR              reduce using rule 87 (varcte -> CTEWORDOO .)
+    COMA            reduce using rule 87 (varcte -> CTEWORDOO .)
+    PARDER          reduce using rule 87 (varcte -> CTEWORDOO .)
+
+
+state 70
+
+    (89) var_id_validation -> ID .
+    (93) llamada -> ID . PARIZQ llamada_1 PARDER
+
+    MULT            reduce using rule 89 (var_id_validation -> ID .)
+    DIV             reduce using rule 89 (var_id_validation -> ID .)
+    SUMA            reduce using rule 89 (var_id_validation -> ID .)
+    RESTA           reduce using rule 89 (var_id_validation -> ID .)
+    PUNTOYCOMA      reduce using rule 89 (var_id_validation -> ID .)
+    MAYORQUE        reduce using rule 89 (var_id_validation -> ID .)
+    MENORQUE        reduce using rule 89 (var_id_validation -> ID .)
+    DIFERENTE       reduce using rule 89 (var_id_validation -> ID .)
+    MENORIGUAL      reduce using rule 89 (var_id_validation -> ID .)
+    MAYORIGUAL      reduce using rule 89 (var_id_validation -> ID .)
+    IGUALIGUAL      reduce using rule 89 (var_id_validation -> ID .)
+    AND             reduce using rule 89 (var_id_validation -> ID .)
+    OR              reduce using rule 89 (var_id_validation -> ID .)
+    COMA            reduce using rule 89 (var_id_validation -> ID .)
+    PARDER          reduce using rule 89 (var_id_validation -> ID .)
+    PARIZQ          shift and go to state 75
+
+
+state 71
+
+    (98) retorno -> RETURNOO retorno_1 . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 100
+
+
+state 72
+
+    (100) retorno_1 -> expresion .
+
+    PUNTOYCOMA      reduce using rule 100 (retorno_1 -> expresion .)
+
+
+state 73
+
+    (50) expresioneslogicas -> exp . expresion_1
+    (52) expresion_1 -> . MAYORQUE puntoN3 exp puntoN8
+    (53) expresion_1 -> . MENORQUE puntoN3 exp puntoN8
+    (54) expresion_1 -> . DIFERENTE puntoN3 exp puntoN8
+    (55) expresion_1 -> . MENORIGUAL puntoN3 exp puntoN8
+    (56) expresion_1 -> . MAYORIGUAL puntoN3 exp puntoN8
+    (57) expresion_1 -> . IGUALIGUAL puntoN3 exp puntoN8
+    (58) expresion_1 -> . vacio
+    (102) vacio -> .
+
+    MAYORQUE        shift and go to state 106
+    MENORQUE        shift and go to state 105
+    DIFERENTE       shift and go to state 104
+    MENORIGUAL      shift and go to state 102
+    MAYORIGUAL      shift and go to state 107
+    IGUALIGUAL      shift and go to state 103
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 108
+    expresion_1                    shift and go to state 101
+
+state 74
+
+    (85) varcte -> CTEINTOO .
+
+    MULT            reduce using rule 85 (varcte -> CTEINTOO .)
+    DIV             reduce using rule 85 (varcte -> CTEINTOO .)
+    SUMA            reduce using rule 85 (varcte -> CTEINTOO .)
+    RESTA           reduce using rule 85 (varcte -> CTEINTOO .)
+    PUNTOYCOMA      reduce using rule 85 (varcte -> CTEINTOO .)
+    MAYORQUE        reduce using rule 85 (varcte -> CTEINTOO .)
+    MENORQUE        reduce using rule 85 (varcte -> CTEINTOO .)
+    DIFERENTE       reduce using rule 85 (varcte -> CTEINTOO .)
+    MENORIGUAL      reduce using rule 85 (varcte -> CTEINTOO .)
+    MAYORIGUAL      reduce using rule 85 (varcte -> CTEINTOO .)
+    IGUALIGUAL      reduce using rule 85 (varcte -> CTEINTOO .)
+    AND             reduce using rule 85 (varcte -> CTEINTOO .)
+    OR              reduce using rule 85 (varcte -> CTEINTOO .)
+    COMA            reduce using rule 85 (varcte -> CTEINTOO .)
+    PARDER          reduce using rule 85 (varcte -> CTEINTOO .)
+
+
+state 75
+
+    (93) llamada -> ID PARIZQ . llamada_1 PARDER
+    (94) llamada_1 -> . expresion llamada_2
+    (95) llamada_1 -> . arreglo llamada_2
+    (44) expresion -> . conjunciones
+    (101) arreglo -> . ARROO tipo CORCHIZQ INTOO CORCHDER
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    ARROO           shift and go to state 90
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    llamada_1                      shift and go to state 109
+    arreglo                        shift and go to state 110
+    termino                        shift and go to state 58
+    factor_1                       shift and go to state 60
+    conjunciones                   shift and go to state 61
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    factor                         shift and go to state 67
+    expresion                      shift and go to state 111
+    exp                            shift and go to state 73
+
+state 76
+
+    (67) condicion -> IF PARIZQ . expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA
+    (44) expresion -> . conjunciones
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    termino                        shift and go to state 58
+    factor_1                       shift and go to state 60
+    conjunciones                   shift and go to state 61
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    factor                         shift and go to state 67
+    expresion                      shift and go to state 112
+    exp                            shift and go to state 73
+
+state 77
+
+    (108) get -> GETOO PARIZQ . get_2 COMA var_id_validation PARDER PUNTOYCOMA
+    (109) get_2 -> . var_id_validation
+    (110) get_2 -> . CTEWORDOO
+    (89) var_id_validation -> . ID
+
+    CTEWORDOO       shift and go to state 115
+    ID              shift and go to state 87
+
+    var_id_validation              shift and go to state 113
+    get_2                          shift and go to state 114
+
+state 78
+
+    (90) ciclo -> LOOP PARIZQ . asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+    (41) asignacion -> . var_id_validation IGUAL asignacion_1 PUNTOYCOMA
+    (89) var_id_validation -> . ID
+
+    ID              shift and go to state 87
+
+    asignacion                     shift and go to state 116
+    var_id_validation              shift and go to state 26
+
+state 79
+
+    (105) save -> SAVOO PARIZQ . expresion COMA save_3 PARDER PUNTOYCOMA
+    (44) expresion -> . conjunciones
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    expresion                      shift and go to state 117
+    conjunciones                   shift and go to state 61
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 73
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+    varcte                         shift and go to state 83
+
+state 80
+
+    (18) var_1 -> tipo ID puntoN2 PUNTOYCOMA . var_1
+    (18) var_1 -> . tipo ID puntoN2 PUNTOYCOMA var_1
+    (19) var_1 -> . vacio
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+    (102) vacio -> .
+
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+    FUNC            reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+    LOOP            reduce using rule 102 (vacio -> .)
+    IF              reduce using rule 102 (vacio -> .)
+    WRITEOO         reduce using rule 102 (vacio -> .)
+    SORTOO          reduce using rule 102 (vacio -> .)
+    READOO          reduce using rule 102 (vacio -> .)
+    SAVOO           reduce using rule 102 (vacio -> .)
+    GETOO           reduce using rule 102 (vacio -> .)
+    RETURNOO        reduce using rule 102 (vacio -> .)
+    LLAVEDER        reduce using rule 102 (vacio -> .)
+
+    var_1                          shift and go to state 119
+    tipo                           shift and go to state 10
+    vacio                          shift and go to state 118
+
+state 81
+
+    (3) funcs -> func_1 ID . puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+    (5) puntoNfx -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+
+    puntoNfx                       shift and go to state 120
+    vacio                          shift and go to state 121
+
+state 82
+
+    (103) sort -> SORTOO PARIZQ ID . PARDER PUNTOYCOMA
+
+    PARDER          shift and go to state 122
+
+
+state 83
+
+    (77) factor_1 -> varcte .
+
+    MULT            reduce using rule 77 (factor_1 -> varcte .)
+    DIV             reduce using rule 77 (factor_1 -> varcte .)
+    SUMA            reduce using rule 77 (factor_1 -> varcte .)
+    RESTA           reduce using rule 77 (factor_1 -> varcte .)
+    MAYORQUE        reduce using rule 77 (factor_1 -> varcte .)
+    MENORQUE        reduce using rule 77 (factor_1 -> varcte .)
+    DIFERENTE       reduce using rule 77 (factor_1 -> varcte .)
+    MENORIGUAL      reduce using rule 77 (factor_1 -> varcte .)
+    MAYORIGUAL      reduce using rule 77 (factor_1 -> varcte .)
+    IGUALIGUAL      reduce using rule 77 (factor_1 -> varcte .)
+    AND             reduce using rule 77 (factor_1 -> varcte .)
+    OR              reduce using rule 77 (factor_1 -> varcte .)
+    COMA            reduce using rule 77 (factor_1 -> varcte .)
+    PARDER          reduce using rule 77 (factor_1 -> varcte .)
+    PUNTOYCOMA      reduce using rule 77 (factor_1 -> varcte .)
+
+
+state 84
+
+    (59) writoo -> WRITEOO PARIZQ writoo_1 . PARDER PUNTOYCOMA
+
+    PARDER          shift and go to state 123
+
+
+state 85
+
+    (60) writoo_1 -> expresion .
+
+    PARDER          reduce using rule 60 (writoo_1 -> expresion .)
+
+
+state 86
+
+    (104) read -> READOO PARIZQ var_id_validation . PARDER PUNTOYCOMA
+
+    PARDER          shift and go to state 124
+
+
+state 87
+
+    (89) var_id_validation -> ID .
+
+    INCMAS          reduce using rule 89 (var_id_validation -> ID .)
+    INCMENOS        reduce using rule 89 (var_id_validation -> ID .)
+    PARDER          reduce using rule 89 (var_id_validation -> ID .)
+    COMA            reduce using rule 89 (var_id_validation -> ID .)
+    IGUAL           reduce using rule 89 (var_id_validation -> ID .)
+
+
+state 88
+
+    (43) asignacion_1 -> arreglo .
+
+    PUNTOYCOMA      reduce using rule 43 (asignacion_1 -> arreglo .)
+
+
+state 89
+
+    (41) asignacion -> var_id_validation IGUAL asignacion_1 . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 125
+
+
+state 90
+
+    (101) arreglo -> ARROO . tipo CORCHIZQ INTOO CORCHDER
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+
+    tipo                           shift and go to state 126
+
+state 91
+
+    (42) asignacion_1 -> expresion .
+
+    PUNTOYCOMA      reduce using rule 42 (asignacion_1 -> expresion .)
+
+
+state 92
+
+    (61) exp -> termino puntoN4 . exp_1
+    (63) exp_1 -> . SUMA puntoN3 exp
+    (64) exp_1 -> . RESTA puntoN3 exp
+    (65) exp_1 -> . vacio
+    (102) vacio -> .
+
+    SUMA            shift and go to state 130
+    RESTA           shift and go to state 129
+    MAYORQUE        reduce using rule 102 (vacio -> .)
+    MENORQUE        reduce using rule 102 (vacio -> .)
+    DIFERENTE       reduce using rule 102 (vacio -> .)
+    MENORIGUAL      reduce using rule 102 (vacio -> .)
+    MAYORIGUAL      reduce using rule 102 (vacio -> .)
+    IGUALIGUAL      reduce using rule 102 (vacio -> .)
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 127
+    exp_1                          shift and go to state 128
+
+state 93
+
+    (62) puntoN4 -> vacio .
+
+    SUMA            reduce using rule 62 (puntoN4 -> vacio .)
+    RESTA           reduce using rule 62 (puntoN4 -> vacio .)
+    MAYORQUE        reduce using rule 62 (puntoN4 -> vacio .)
+    MENORQUE        reduce using rule 62 (puntoN4 -> vacio .)
+    DIFERENTE       reduce using rule 62 (puntoN4 -> vacio .)
+    MENORIGUAL      reduce using rule 62 (puntoN4 -> vacio .)
+    MAYORIGUAL      reduce using rule 62 (puntoN4 -> vacio .)
+    IGUALIGUAL      reduce using rule 62 (puntoN4 -> vacio .)
+    AND             reduce using rule 62 (puntoN4 -> vacio .)
+    OR              reduce using rule 62 (puntoN4 -> vacio .)
+    PUNTOYCOMA      reduce using rule 62 (puntoN4 -> vacio .)
+    PARDER          reduce using rule 62 (puntoN4 -> vacio .)
+    COMA            reduce using rule 62 (puntoN4 -> vacio .)
+
+
+state 94
+
+    (76) factor_1 -> PARIZQ puntoN6 . expresion PARDER puntoN7
+    (44) expresion -> . conjunciones
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    expresion                      shift and go to state 131
+    var_id_validation              shift and go to state 64
+    varcte                         shift and go to state 83
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 73
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+    conjunciones                   shift and go to state 61
+
+state 95
+
+    (78) puntoN6 -> vacio .
+
+    PARIZQ          reduce using rule 78 (puntoN6 -> vacio .)
+    CTEINTOO        reduce using rule 78 (puntoN6 -> vacio .)
+    CTEDECOO        reduce using rule 78 (puntoN6 -> vacio .)
+    CTEWORDOO       reduce using rule 78 (puntoN6 -> vacio .)
+    CHAROO          reduce using rule 78 (puntoN6 -> vacio .)
+    ID              reduce using rule 78 (puntoN6 -> vacio .)
+
+
+state 96
+
+    (45) conjunciones -> expresioneslogicas puntoN9 . conj_1
+    (47) conj_1 -> . AND puntoN3 conjunciones
+    (48) conj_1 -> . OR puntoN3 conjunciones
+    (49) conj_1 -> . vacio
+    (102) vacio -> .
+
+    AND             shift and go to state 132
+    OR              shift and go to state 135
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 133
+    conj_1                         shift and go to state 134
+
+state 97
+
+    (46) puntoN9 -> vacio .
+
+    AND             reduce using rule 46 (puntoN9 -> vacio .)
+    OR              reduce using rule 46 (puntoN9 -> vacio .)
+    PUNTOYCOMA      reduce using rule 46 (puntoN9 -> vacio .)
+    PARDER          reduce using rule 46 (puntoN9 -> vacio .)
+    COMA            reduce using rule 46 (puntoN9 -> vacio .)
+
+
+state 98
+
+    (70) termino -> factor puntoN5 . termino_1
+    (72) termino_1 -> . MULT puntoN3 termino
+    (73) termino_1 -> . DIV puntoN3 termino
+    (74) termino_1 -> . vacio
+    (102) vacio -> .
+
+    MULT            shift and go to state 139
+    DIV             shift and go to state 138
+    SUMA            reduce using rule 102 (vacio -> .)
+    RESTA           reduce using rule 102 (vacio -> .)
+    MAYORQUE        reduce using rule 102 (vacio -> .)
+    MENORQUE        reduce using rule 102 (vacio -> .)
+    DIFERENTE       reduce using rule 102 (vacio -> .)
+    MENORIGUAL      reduce using rule 102 (vacio -> .)
+    MAYORIGUAL      reduce using rule 102 (vacio -> .)
+    IGUALIGUAL      reduce using rule 102 (vacio -> .)
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    termino_1                      shift and go to state 136
+    vacio                          shift and go to state 137
+
+state 99
+
+    (71) puntoN5 -> vacio .
+
+    MULT            reduce using rule 71 (puntoN5 -> vacio .)
+    DIV             reduce using rule 71 (puntoN5 -> vacio .)
+    SUMA            reduce using rule 71 (puntoN5 -> vacio .)
+    RESTA           reduce using rule 71 (puntoN5 -> vacio .)
+    MAYORQUE        reduce using rule 71 (puntoN5 -> vacio .)
+    MENORQUE        reduce using rule 71 (puntoN5 -> vacio .)
+    DIFERENTE       reduce using rule 71 (puntoN5 -> vacio .)
+    MENORIGUAL      reduce using rule 71 (puntoN5 -> vacio .)
+    MAYORIGUAL      reduce using rule 71 (puntoN5 -> vacio .)
+    IGUALIGUAL      reduce using rule 71 (puntoN5 -> vacio .)
+    AND             reduce using rule 71 (puntoN5 -> vacio .)
+    OR              reduce using rule 71 (puntoN5 -> vacio .)
+    PUNTOYCOMA      reduce using rule 71 (puntoN5 -> vacio .)
+    PARDER          reduce using rule 71 (puntoN5 -> vacio .)
+    COMA            reduce using rule 71 (puntoN5 -> vacio .)
+
+
+state 100
+
+    (98) retorno -> RETURNOO retorno_1 PUNTOYCOMA .
+
+    ID              reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    LOOP            reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    IF              reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    WRITEOO         reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    SORTOO          reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    READOO          reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    SAVOO           reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    GETOO           reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    RETURNOO        reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 98 (retorno -> RETURNOO retorno_1 PUNTOYCOMA .)
+
+
+state 101
+
+    (50) expresioneslogicas -> exp expresion_1 .
+
+    AND             reduce using rule 50 (expresioneslogicas -> exp expresion_1 .)
+    OR              reduce using rule 50 (expresioneslogicas -> exp expresion_1 .)
+    COMA            reduce using rule 50 (expresioneslogicas -> exp expresion_1 .)
+    PARDER          reduce using rule 50 (expresioneslogicas -> exp expresion_1 .)
+    PUNTOYCOMA      reduce using rule 50 (expresioneslogicas -> exp expresion_1 .)
+
+
+state 102
+
+    (55) expresion_1 -> MENORIGUAL . puntoN3 exp puntoN8
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 140
+    puntoN3                        shift and go to state 141
+
+state 103
+
+    (57) expresion_1 -> IGUALIGUAL . puntoN3 exp puntoN8
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 140
+    puntoN3                        shift and go to state 142
+
+state 104
+
+    (54) expresion_1 -> DIFERENTE . puntoN3 exp puntoN8
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 140
+    puntoN3                        shift and go to state 143
+
+state 105
+
+    (53) expresion_1 -> MENORQUE . puntoN3 exp puntoN8
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 140
+    puntoN3                        shift and go to state 144
+
+state 106
+
+    (52) expresion_1 -> MAYORQUE . puntoN3 exp puntoN8
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 140
+    puntoN3                        shift and go to state 145
+
+state 107
+
+    (56) expresion_1 -> MAYORIGUAL . puntoN3 exp puntoN8
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 140
+    puntoN3                        shift and go to state 146
+
+state 108
+
+    (58) expresion_1 -> vacio .
+
+    AND             reduce using rule 58 (expresion_1 -> vacio .)
+    OR              reduce using rule 58 (expresion_1 -> vacio .)
+    PUNTOYCOMA      reduce using rule 58 (expresion_1 -> vacio .)
+    PARDER          reduce using rule 58 (expresion_1 -> vacio .)
+    COMA            reduce using rule 58 (expresion_1 -> vacio .)
+
+
+state 109
+
+    (93) llamada -> ID PARIZQ llamada_1 . PARDER
+
+    PARDER          shift and go to state 147
+
+
+state 110
+
+    (95) llamada_1 -> arreglo . llamada_2
+    (96) llamada_2 -> . COMA llamada_1
+    (97) llamada_2 -> . vacio
+    (102) vacio -> .
+
+    COMA            shift and go to state 148
+    PARDER          reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 149
+    llamada_2                      shift and go to state 150
+
+state 111
+
+    (94) llamada_1 -> expresion . llamada_2
+    (96) llamada_2 -> . COMA llamada_1
+    (97) llamada_2 -> . vacio
+    (102) vacio -> .
+
+    COMA            shift and go to state 148
+    PARDER          reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 149
+    llamada_2                      shift and go to state 151
+
+state 112
+
+    (67) condicion -> IF PARIZQ expresion . PARDER DOTHIS bloque condicion_1 PUNTOYCOMA
+
+    PARDER          shift and go to state 152
+
+
+state 113
+
+    (109) get_2 -> var_id_validation .
+
+    COMA            reduce using rule 109 (get_2 -> var_id_validation .)
+
+
+state 114
+
+    (108) get -> GETOO PARIZQ get_2 . COMA var_id_validation PARDER PUNTOYCOMA
+
+    COMA            shift and go to state 153
+
+
+state 115
+
+    (110) get_2 -> CTEWORDOO .
+
+    COMA            reduce using rule 110 (get_2 -> CTEWORDOO .)
+
+
+state 116
+
+    (90) ciclo -> LOOP PARIZQ asignacion . expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+    (44) expresion -> . conjunciones
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    termino                        shift and go to state 58
+    factor_1                       shift and go to state 60
+    conjunciones                   shift and go to state 61
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    factor                         shift and go to state 67
+    expresion                      shift and go to state 154
+    exp                            shift and go to state 73
+
+state 117
+
+    (105) save -> SAVOO PARIZQ expresion . COMA save_3 PARDER PUNTOYCOMA
+
+    COMA            shift and go to state 155
+
+
+state 118
+
+    (19) var_1 -> vacio .
+
+    FUNC            reduce using rule 19 (var_1 -> vacio .)
+    ID              reduce using rule 19 (var_1 -> vacio .)
+    LOOP            reduce using rule 19 (var_1 -> vacio .)
+    IF              reduce using rule 19 (var_1 -> vacio .)
+    WRITEOO         reduce using rule 19 (var_1 -> vacio .)
+    SORTOO          reduce using rule 19 (var_1 -> vacio .)
+    READOO          reduce using rule 19 (var_1 -> vacio .)
+    SAVOO           reduce using rule 19 (var_1 -> vacio .)
+    GETOO           reduce using rule 19 (var_1 -> vacio .)
+    RETURNOO        reduce using rule 19 (var_1 -> vacio .)
+    LLAVEDER        reduce using rule 19 (var_1 -> vacio .)
+
+
+state 119
+
+    (18) var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .
+
+    FUNC            reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    ID              reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    LOOP            reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    IF              reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    WRITEOO         reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    SORTOO          reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    READOO          reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    SAVOO           reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    GETOO           reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    RETURNOO        reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+    LLAVEDER        reduce using rule 18 (var_1 -> tipo ID puntoN2 PUNTOYCOMA var_1 .)
+
+
+state 120
+
+    (3) funcs -> func_1 ID puntoNfx . PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+
+    PARIZQ          shift and go to state 156
+
+
+state 121
+
+    (5) puntoNfx -> vacio .
+
+    PARIZQ          reduce using rule 5 (puntoNfx -> vacio .)
+
+
+state 122
+
+    (103) sort -> SORTOO PARIZQ ID PARDER . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 157
+
+
+state 123
+
+    (59) writoo -> WRITEOO PARIZQ writoo_1 PARDER . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 158
+
+
+state 124
+
+    (104) read -> READOO PARIZQ var_id_validation PARDER . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 159
+
+
+state 125
+
+    (41) asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .
+
+    ID              reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    LOOP            reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    IF              reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    WRITEOO         reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    SORTOO          reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    READOO          reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    SAVOO           reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    GETOO           reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    RETURNOO        reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    PARIZQ          reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    CTEINTOO        reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    CTEDECOO        reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    CTEWORDOO       reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+    CHAROO          reduce using rule 41 (asignacion -> var_id_validation IGUAL asignacion_1 PUNTOYCOMA .)
+
+
+state 126
+
+    (101) arreglo -> ARROO tipo . CORCHIZQ INTOO CORCHDER
+
+    CORCHIZQ        shift and go to state 160
+
+
+state 127
+
+    (65) exp_1 -> vacio .
+
+    MAYORQUE        reduce using rule 65 (exp_1 -> vacio .)
+    MENORQUE        reduce using rule 65 (exp_1 -> vacio .)
+    DIFERENTE       reduce using rule 65 (exp_1 -> vacio .)
+    MENORIGUAL      reduce using rule 65 (exp_1 -> vacio .)
+    MAYORIGUAL      reduce using rule 65 (exp_1 -> vacio .)
+    IGUALIGUAL      reduce using rule 65 (exp_1 -> vacio .)
+    AND             reduce using rule 65 (exp_1 -> vacio .)
+    OR              reduce using rule 65 (exp_1 -> vacio .)
+    PUNTOYCOMA      reduce using rule 65 (exp_1 -> vacio .)
+    PARDER          reduce using rule 65 (exp_1 -> vacio .)
+    COMA            reduce using rule 65 (exp_1 -> vacio .)
+
+
+state 128
+
+    (61) exp -> termino puntoN4 exp_1 .
+
+    AND             reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    OR              reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    PUNTOYCOMA      reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    PARDER          reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    COMA            reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    MAYORQUE        reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    MENORQUE        reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    DIFERENTE       reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    MENORIGUAL      reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    MAYORIGUAL      reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+    IGUALIGUAL      reduce using rule 61 (exp -> termino puntoN4 exp_1 .)
+
+
+state 129
+
+    (64) exp_1 -> RESTA . puntoN3 exp
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    puntoN3                        shift and go to state 161
+    vacio                          shift and go to state 140
+
+state 130
+
+    (63) exp_1 -> SUMA . puntoN3 exp
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    puntoN3                        shift and go to state 162
+    vacio                          shift and go to state 140
+
+state 131
+
+    (76) factor_1 -> PARIZQ puntoN6 expresion . PARDER puntoN7
+
+    PARDER          shift and go to state 163
+
+
+state 132
+
+    (47) conj_1 -> AND . puntoN3 conjunciones
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    puntoN3                        shift and go to state 164
+    vacio                          shift and go to state 140
+
+state 133
+
+    (49) conj_1 -> vacio .
+
+    PUNTOYCOMA      reduce using rule 49 (conj_1 -> vacio .)
+    PARDER          reduce using rule 49 (conj_1 -> vacio .)
+    COMA            reduce using rule 49 (conj_1 -> vacio .)
+
+
+state 134
+
+    (45) conjunciones -> expresioneslogicas puntoN9 conj_1 .
+
+    PARDER          reduce using rule 45 (conjunciones -> expresioneslogicas puntoN9 conj_1 .)
+    COMA            reduce using rule 45 (conjunciones -> expresioneslogicas puntoN9 conj_1 .)
+    PUNTOYCOMA      reduce using rule 45 (conjunciones -> expresioneslogicas puntoN9 conj_1 .)
+
+
+state 135
+
+    (48) conj_1 -> OR . puntoN3 conjunciones
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    puntoN3                        shift and go to state 165
+    vacio                          shift and go to state 140
+
+state 136
+
+    (70) termino -> factor puntoN5 termino_1 .
+
+    SUMA            reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    RESTA           reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    AND             reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    OR              reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    PUNTOYCOMA      reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    PARDER          reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    COMA            reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    MAYORQUE        reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    MENORQUE        reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    DIFERENTE       reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    MENORIGUAL      reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    MAYORIGUAL      reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+    IGUALIGUAL      reduce using rule 70 (termino -> factor puntoN5 termino_1 .)
+
+
+state 137
+
+    (74) termino_1 -> vacio .
+
+    SUMA            reduce using rule 74 (termino_1 -> vacio .)
+    RESTA           reduce using rule 74 (termino_1 -> vacio .)
+    MAYORQUE        reduce using rule 74 (termino_1 -> vacio .)
+    MENORQUE        reduce using rule 74 (termino_1 -> vacio .)
+    DIFERENTE       reduce using rule 74 (termino_1 -> vacio .)
+    MENORIGUAL      reduce using rule 74 (termino_1 -> vacio .)
+    MAYORIGUAL      reduce using rule 74 (termino_1 -> vacio .)
+    IGUALIGUAL      reduce using rule 74 (termino_1 -> vacio .)
+    AND             reduce using rule 74 (termino_1 -> vacio .)
+    OR              reduce using rule 74 (termino_1 -> vacio .)
+    PUNTOYCOMA      reduce using rule 74 (termino_1 -> vacio .)
+    PARDER          reduce using rule 74 (termino_1 -> vacio .)
+    COMA            reduce using rule 74 (termino_1 -> vacio .)
+
+
+state 138
+
+    (73) termino_1 -> DIV . puntoN3 termino
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    puntoN3                        shift and go to state 166
+    vacio                          shift and go to state 140
+
+state 139
+
+    (72) termino_1 -> MULT . puntoN3 termino
+    (66) puntoN3 -> . vacio
+    (102) vacio -> .
+
+    PARIZQ          reduce using rule 102 (vacio -> .)
+    CTEINTOO        reduce using rule 102 (vacio -> .)
+    CTEDECOO        reduce using rule 102 (vacio -> .)
+    CTEWORDOO       reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    ID              reduce using rule 102 (vacio -> .)
+
+    puntoN3                        shift and go to state 167
+    vacio                          shift and go to state 140
+
+state 140
+
+    (66) puntoN3 -> vacio .
+
+    PARIZQ          reduce using rule 66 (puntoN3 -> vacio .)
+    CTEINTOO        reduce using rule 66 (puntoN3 -> vacio .)
+    CTEDECOO        reduce using rule 66 (puntoN3 -> vacio .)
+    CTEWORDOO       reduce using rule 66 (puntoN3 -> vacio .)
+    CHAROO          reduce using rule 66 (puntoN3 -> vacio .)
+    ID              reduce using rule 66 (puntoN3 -> vacio .)
+
+
+state 141
+
+    (55) expresion_1 -> MENORIGUAL puntoN3 . exp puntoN8
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 168
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 142
+
+    (57) expresion_1 -> IGUALIGUAL puntoN3 . exp puntoN8
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 169
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 143
+
+    (54) expresion_1 -> DIFERENTE puntoN3 . exp puntoN8
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 170
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 144
+
+    (53) expresion_1 -> MENORQUE puntoN3 . exp puntoN8
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 171
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 145
+
+    (52) expresion_1 -> MAYORQUE puntoN3 . exp puntoN8
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 172
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 146
+
+    (56) expresion_1 -> MAYORIGUAL puntoN3 . exp puntoN8
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 173
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 147
+
+    (93) llamada -> ID PARIZQ llamada_1 PARDER .
+
+    MULT            reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    DIV             reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    SUMA            reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    RESTA           reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    MAYORQUE        reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    MENORQUE        reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    DIFERENTE       reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    MENORIGUAL      reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    MAYORIGUAL      reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    IGUALIGUAL      reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    AND             reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    OR              reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    COMA            reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    PARDER          reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+    PUNTOYCOMA      reduce using rule 93 (llamada -> ID PARIZQ llamada_1 PARDER .)
+
+
+state 148
+
+    (96) llamada_2 -> COMA . llamada_1
+    (94) llamada_1 -> . expresion llamada_2
+    (95) llamada_1 -> . arreglo llamada_2
+    (44) expresion -> . conjunciones
+    (101) arreglo -> . ARROO tipo CORCHIZQ INTOO CORCHDER
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    ARROO           shift and go to state 90
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    llamada_1                      shift and go to state 174
+    arreglo                        shift and go to state 110
+    termino                        shift and go to state 58
+    factor_1                       shift and go to state 60
+    conjunciones                   shift and go to state 61
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    factor                         shift and go to state 67
+    expresion                      shift and go to state 111
+    exp                            shift and go to state 73
+
+state 149
+
+    (97) llamada_2 -> vacio .
+
+    PARDER          reduce using rule 97 (llamada_2 -> vacio .)
+
+
+state 150
+
+    (95) llamada_1 -> arreglo llamada_2 .
+
+    PARDER          reduce using rule 95 (llamada_1 -> arreglo llamada_2 .)
+
+
+state 151
+
+    (94) llamada_1 -> expresion llamada_2 .
+
+    PARDER          reduce using rule 94 (llamada_1 -> expresion llamada_2 .)
+
+
+state 152
+
+    (67) condicion -> IF PARIZQ expresion PARDER . DOTHIS bloque condicion_1 PUNTOYCOMA
+
+    DOTHIS          shift and go to state 175
+
+
+state 153
+
+    (108) get -> GETOO PARIZQ get_2 COMA . var_id_validation PARDER PUNTOYCOMA
+    (89) var_id_validation -> . ID
+
+    ID              shift and go to state 87
+
+    var_id_validation              shift and go to state 176
+
+state 154
+
+    (90) ciclo -> LOOP PARIZQ asignacion expresion . PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+
+    PUNTOYCOMA      shift and go to state 177
+
+
+state 155
+
+    (105) save -> SAVOO PARIZQ expresion COMA . save_3 PARDER PUNTOYCOMA
+    (106) save_3 -> . var_id_validation
+    (107) save_3 -> . CTEWORDOO
+    (89) var_id_validation -> . ID
+
+    CTEWORDOO       shift and go to state 179
+    ID              shift and go to state 87
+
+    var_id_validation              shift and go to state 178
+    save_3                         shift and go to state 180
+
+state 156
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ . func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+    (10) func_2 -> . tipo ID puntoNfx1 func_21
+    (11) func_2 -> . vacio
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+    (102) vacio -> .
+
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+    PARDER          reduce using rule 102 (vacio -> .)
+
+    tipo                           shift and go to state 182
+    func_2                         shift and go to state 181
+    vacio                          shift and go to state 183
+
+state 157
+
+    (103) sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .
+
+    ID              reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    LOOP            reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    IF              reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    WRITEOO         reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    SORTOO          reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    READOO          reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    SAVOO           reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    GETOO           reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    RETURNOO        reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 103 (sort -> SORTOO PARIZQ ID PARDER PUNTOYCOMA .)
+
+
+state 158
+
+    (59) writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .
+
+    ID              reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    LOOP            reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    IF              reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    WRITEOO         reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    SORTOO          reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    READOO          reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    SAVOO           reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    GETOO           reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    RETURNOO        reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 59 (writoo -> WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA .)
+
+
+state 159
+
+    (104) read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .
+
+    ID              reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    LOOP            reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    IF              reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    WRITEOO         reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    SORTOO          reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    READOO          reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    SAVOO           reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    GETOO           reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    RETURNOO        reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 104 (read -> READOO PARIZQ var_id_validation PARDER PUNTOYCOMA .)
+
+
+state 160
+
+    (101) arreglo -> ARROO tipo CORCHIZQ . INTOO CORCHDER
+
+    INTOO           shift and go to state 184
+
+
+state 161
+
+    (64) exp_1 -> RESTA puntoN3 . exp
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 185
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 162
+
+    (63) exp_1 -> SUMA puntoN3 . exp
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 186
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 163
+
+    (76) factor_1 -> PARIZQ puntoN6 expresion PARDER . puntoN7
+    (79) puntoN7 -> . vacio
+    (102) vacio -> .
+
+    MULT            reduce using rule 102 (vacio -> .)
+    DIV             reduce using rule 102 (vacio -> .)
+    SUMA            reduce using rule 102 (vacio -> .)
+    RESTA           reduce using rule 102 (vacio -> .)
+    MAYORQUE        reduce using rule 102 (vacio -> .)
+    MENORQUE        reduce using rule 102 (vacio -> .)
+    DIFERENTE       reduce using rule 102 (vacio -> .)
+    MENORIGUAL      reduce using rule 102 (vacio -> .)
+    MAYORIGUAL      reduce using rule 102 (vacio -> .)
+    IGUALIGUAL      reduce using rule 102 (vacio -> .)
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    puntoN7                        shift and go to state 188
+    vacio                          shift and go to state 187
+
+state 164
+
+    (47) conj_1 -> AND puntoN3 . conjunciones
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    conjunciones                   shift and go to state 189
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 73
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+    varcte                         shift and go to state 83
+
+state 165
+
+    (48) conj_1 -> OR puntoN3 . conjunciones
+    (45) conjunciones -> . expresioneslogicas puntoN9 conj_1
+    (50) expresioneslogicas -> . exp expresion_1
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    conjunciones                   shift and go to state 190
+    var_id_validation              shift and go to state 64
+    expresioneslogicas             shift and go to state 65
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 73
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+    varcte                         shift and go to state 83
+
+state 166
+
+    (73) termino_1 -> DIV puntoN3 . termino
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 191
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 167
+
+    (72) termino_1 -> MULT puntoN3 . termino
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 192
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 168
+
+    (55) expresion_1 -> MENORIGUAL puntoN3 exp . puntoN8
+    (51) puntoN8 -> . vacio
+    (102) vacio -> .
+
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 193
+    puntoN8                        shift and go to state 194
+
+state 169
+
+    (57) expresion_1 -> IGUALIGUAL puntoN3 exp . puntoN8
+    (51) puntoN8 -> . vacio
+    (102) vacio -> .
+
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 193
+    puntoN8                        shift and go to state 195
+
+state 170
+
+    (54) expresion_1 -> DIFERENTE puntoN3 exp . puntoN8
+    (51) puntoN8 -> . vacio
+    (102) vacio -> .
+
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 193
+    puntoN8                        shift and go to state 196
+
+state 171
+
+    (53) expresion_1 -> MENORQUE puntoN3 exp . puntoN8
+    (51) puntoN8 -> . vacio
+    (102) vacio -> .
+
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 193
+    puntoN8                        shift and go to state 197
+
+state 172
+
+    (52) expresion_1 -> MAYORQUE puntoN3 exp . puntoN8
+    (51) puntoN8 -> . vacio
+    (102) vacio -> .
+
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 193
+    puntoN8                        shift and go to state 198
+
+state 173
+
+    (56) expresion_1 -> MAYORIGUAL puntoN3 exp . puntoN8
+    (51) puntoN8 -> . vacio
+    (102) vacio -> .
+
+    AND             reduce using rule 102 (vacio -> .)
+    OR              reduce using rule 102 (vacio -> .)
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+    COMA            reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 193
+    puntoN8                        shift and go to state 199
+
+state 174
+
+    (96) llamada_2 -> COMA llamada_1 .
+
+    PARDER          reduce using rule 96 (llamada_2 -> COMA llamada_1 .)
+
+
+state 175
+
+    (67) condicion -> IF PARIZQ expresion PARDER DOTHIS . bloque condicion_1 PUNTOYCOMA
+    (28) bloque -> . LLAVEIZQ bloque_1 LLAVEDER
+
+    LLAVEIZQ        shift and go to state 17
+
+    bloque                         shift and go to state 200
+
+state 176
+
+    (108) get -> GETOO PARIZQ get_2 COMA var_id_validation . PARDER PUNTOYCOMA
+
+    PARDER          shift and go to state 201
+
+
+state 177
+
+    (90) ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA . incremento PUNTOYCOMA PARDER bloque
+    (91) incremento -> . var_id_validation INCMAS exp
+    (92) incremento -> . var_id_validation INCMENOS exp
+    (89) var_id_validation -> . ID
+
+    ID              shift and go to state 87
+
+    var_id_validation              shift and go to state 202
+    incremento                     shift and go to state 203
+
+state 178
+
+    (106) save_3 -> var_id_validation .
+
+    PARDER          reduce using rule 106 (save_3 -> var_id_validation .)
+
+
+state 179
+
+    (107) save_3 -> CTEWORDOO .
+
+    PARDER          reduce using rule 107 (save_3 -> CTEWORDOO .)
+
+
+state 180
+
+    (105) save -> SAVOO PARIZQ expresion COMA save_3 . PARDER PUNTOYCOMA
+
+    PARDER          shift and go to state 204
+
+
+state 181
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 . PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+
+    PARDER          shift and go to state 205
+
+
+state 182
+
+    (10) func_2 -> tipo . ID puntoNfx1 func_21
+
+    ID              shift and go to state 206
+
+
+state 183
+
+    (11) func_2 -> vacio .
+
+    PARDER          reduce using rule 11 (func_2 -> vacio .)
+
+
+state 184
+
+    (101) arreglo -> ARROO tipo CORCHIZQ INTOO . CORCHDER
+
+    CORCHDER        shift and go to state 207
+
+
+state 185
+
+    (64) exp_1 -> RESTA puntoN3 exp .
+
+    MAYORQUE        reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    MENORQUE        reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    DIFERENTE       reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    MENORIGUAL      reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    MAYORIGUAL      reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    IGUALIGUAL      reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    AND             reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    OR              reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    PUNTOYCOMA      reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    PARDER          reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+    COMA            reduce using rule 64 (exp_1 -> RESTA puntoN3 exp .)
+
+
+state 186
+
+    (63) exp_1 -> SUMA puntoN3 exp .
+
+    MAYORQUE        reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    MENORQUE        reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    DIFERENTE       reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    MENORIGUAL      reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    MAYORIGUAL      reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    IGUALIGUAL      reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    AND             reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    OR              reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    PUNTOYCOMA      reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    PARDER          reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+    COMA            reduce using rule 63 (exp_1 -> SUMA puntoN3 exp .)
+
+
+state 187
+
+    (79) puntoN7 -> vacio .
+
+    MULT            reduce using rule 79 (puntoN7 -> vacio .)
+    DIV             reduce using rule 79 (puntoN7 -> vacio .)
+    SUMA            reduce using rule 79 (puntoN7 -> vacio .)
+    RESTA           reduce using rule 79 (puntoN7 -> vacio .)
+    MAYORQUE        reduce using rule 79 (puntoN7 -> vacio .)
+    MENORQUE        reduce using rule 79 (puntoN7 -> vacio .)
+    DIFERENTE       reduce using rule 79 (puntoN7 -> vacio .)
+    MENORIGUAL      reduce using rule 79 (puntoN7 -> vacio .)
+    MAYORIGUAL      reduce using rule 79 (puntoN7 -> vacio .)
+    IGUALIGUAL      reduce using rule 79 (puntoN7 -> vacio .)
+    AND             reduce using rule 79 (puntoN7 -> vacio .)
+    OR              reduce using rule 79 (puntoN7 -> vacio .)
+    PUNTOYCOMA      reduce using rule 79 (puntoN7 -> vacio .)
+    PARDER          reduce using rule 79 (puntoN7 -> vacio .)
+    COMA            reduce using rule 79 (puntoN7 -> vacio .)
+
+
+state 188
+
+    (76) factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .
+
+    MULT            reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    DIV             reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    SUMA            reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    RESTA           reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    MAYORQUE        reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    MENORQUE        reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    DIFERENTE       reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    MENORIGUAL      reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    MAYORIGUAL      reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    IGUALIGUAL      reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    AND             reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    OR              reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    COMA            reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    PARDER          reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+    PUNTOYCOMA      reduce using rule 76 (factor_1 -> PARIZQ puntoN6 expresion PARDER puntoN7 .)
+
+
+state 189
+
+    (47) conj_1 -> AND puntoN3 conjunciones .
+
+    PUNTOYCOMA      reduce using rule 47 (conj_1 -> AND puntoN3 conjunciones .)
+    PARDER          reduce using rule 47 (conj_1 -> AND puntoN3 conjunciones .)
+    COMA            reduce using rule 47 (conj_1 -> AND puntoN3 conjunciones .)
+
+
+state 190
+
+    (48) conj_1 -> OR puntoN3 conjunciones .
+
+    PUNTOYCOMA      reduce using rule 48 (conj_1 -> OR puntoN3 conjunciones .)
+    PARDER          reduce using rule 48 (conj_1 -> OR puntoN3 conjunciones .)
+    COMA            reduce using rule 48 (conj_1 -> OR puntoN3 conjunciones .)
+
+
+state 191
+
+    (73) termino_1 -> DIV puntoN3 termino .
+
+    SUMA            reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    RESTA           reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    MAYORQUE        reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    MENORQUE        reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    DIFERENTE       reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    MENORIGUAL      reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    MAYORIGUAL      reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    IGUALIGUAL      reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    AND             reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    OR              reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    PUNTOYCOMA      reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    PARDER          reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+    COMA            reduce using rule 73 (termino_1 -> DIV puntoN3 termino .)
+
+
+state 192
+
+    (72) termino_1 -> MULT puntoN3 termino .
+
+    SUMA            reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    RESTA           reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    MAYORQUE        reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    MENORQUE        reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    DIFERENTE       reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    MENORIGUAL      reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    MAYORIGUAL      reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    IGUALIGUAL      reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    AND             reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    OR              reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    PUNTOYCOMA      reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    PARDER          reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+    COMA            reduce using rule 72 (termino_1 -> MULT puntoN3 termino .)
+
+
+state 193
+
+    (51) puntoN8 -> vacio .
+
+    AND             reduce using rule 51 (puntoN8 -> vacio .)
+    OR              reduce using rule 51 (puntoN8 -> vacio .)
+    PUNTOYCOMA      reduce using rule 51 (puntoN8 -> vacio .)
+    PARDER          reduce using rule 51 (puntoN8 -> vacio .)
+    COMA            reduce using rule 51 (puntoN8 -> vacio .)
+
+
+state 194
+
+    (55) expresion_1 -> MENORIGUAL puntoN3 exp puntoN8 .
+
+    AND             reduce using rule 55 (expresion_1 -> MENORIGUAL puntoN3 exp puntoN8 .)
+    OR              reduce using rule 55 (expresion_1 -> MENORIGUAL puntoN3 exp puntoN8 .)
+    PUNTOYCOMA      reduce using rule 55 (expresion_1 -> MENORIGUAL puntoN3 exp puntoN8 .)
+    PARDER          reduce using rule 55 (expresion_1 -> MENORIGUAL puntoN3 exp puntoN8 .)
+    COMA            reduce using rule 55 (expresion_1 -> MENORIGUAL puntoN3 exp puntoN8 .)
+
+
+state 195
+
+    (57) expresion_1 -> IGUALIGUAL puntoN3 exp puntoN8 .
+
+    AND             reduce using rule 57 (expresion_1 -> IGUALIGUAL puntoN3 exp puntoN8 .)
+    OR              reduce using rule 57 (expresion_1 -> IGUALIGUAL puntoN3 exp puntoN8 .)
+    PUNTOYCOMA      reduce using rule 57 (expresion_1 -> IGUALIGUAL puntoN3 exp puntoN8 .)
+    PARDER          reduce using rule 57 (expresion_1 -> IGUALIGUAL puntoN3 exp puntoN8 .)
+    COMA            reduce using rule 57 (expresion_1 -> IGUALIGUAL puntoN3 exp puntoN8 .)
+
+
+state 196
+
+    (54) expresion_1 -> DIFERENTE puntoN3 exp puntoN8 .
+
+    AND             reduce using rule 54 (expresion_1 -> DIFERENTE puntoN3 exp puntoN8 .)
+    OR              reduce using rule 54 (expresion_1 -> DIFERENTE puntoN3 exp puntoN8 .)
+    PUNTOYCOMA      reduce using rule 54 (expresion_1 -> DIFERENTE puntoN3 exp puntoN8 .)
+    PARDER          reduce using rule 54 (expresion_1 -> DIFERENTE puntoN3 exp puntoN8 .)
+    COMA            reduce using rule 54 (expresion_1 -> DIFERENTE puntoN3 exp puntoN8 .)
+
+
+state 197
+
+    (53) expresion_1 -> MENORQUE puntoN3 exp puntoN8 .
+
+    AND             reduce using rule 53 (expresion_1 -> MENORQUE puntoN3 exp puntoN8 .)
+    OR              reduce using rule 53 (expresion_1 -> MENORQUE puntoN3 exp puntoN8 .)
+    PUNTOYCOMA      reduce using rule 53 (expresion_1 -> MENORQUE puntoN3 exp puntoN8 .)
+    PARDER          reduce using rule 53 (expresion_1 -> MENORQUE puntoN3 exp puntoN8 .)
+    COMA            reduce using rule 53 (expresion_1 -> MENORQUE puntoN3 exp puntoN8 .)
+
+
+state 198
+
+    (52) expresion_1 -> MAYORQUE puntoN3 exp puntoN8 .
+
+    AND             reduce using rule 52 (expresion_1 -> MAYORQUE puntoN3 exp puntoN8 .)
+    OR              reduce using rule 52 (expresion_1 -> MAYORQUE puntoN3 exp puntoN8 .)
+    PUNTOYCOMA      reduce using rule 52 (expresion_1 -> MAYORQUE puntoN3 exp puntoN8 .)
+    PARDER          reduce using rule 52 (expresion_1 -> MAYORQUE puntoN3 exp puntoN8 .)
+    COMA            reduce using rule 52 (expresion_1 -> MAYORQUE puntoN3 exp puntoN8 .)
+
+
+state 199
+
+    (56) expresion_1 -> MAYORIGUAL puntoN3 exp puntoN8 .
+
+    AND             reduce using rule 56 (expresion_1 -> MAYORIGUAL puntoN3 exp puntoN8 .)
+    OR              reduce using rule 56 (expresion_1 -> MAYORIGUAL puntoN3 exp puntoN8 .)
+    PUNTOYCOMA      reduce using rule 56 (expresion_1 -> MAYORIGUAL puntoN3 exp puntoN8 .)
+    PARDER          reduce using rule 56 (expresion_1 -> MAYORIGUAL puntoN3 exp puntoN8 .)
+    COMA            reduce using rule 56 (expresion_1 -> MAYORIGUAL puntoN3 exp puntoN8 .)
+
+
+state 200
+
+    (67) condicion -> IF PARIZQ expresion PARDER DOTHIS bloque . condicion_1 PUNTOYCOMA
+    (68) condicion_1 -> . ORTHIS bloque
+    (69) condicion_1 -> . vacio
+    (102) vacio -> .
+
+    ORTHIS          shift and go to state 208
+    PUNTOYCOMA      reduce using rule 102 (vacio -> .)
+
+    condicion_1                    shift and go to state 210
+    vacio                          shift and go to state 209
+
+state 201
+
+    (108) get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 211
+
+
+state 202
+
+    (91) incremento -> var_id_validation . INCMAS exp
+    (92) incremento -> var_id_validation . INCMENOS exp
+
+    INCMAS          shift and go to state 213
+    INCMENOS        shift and go to state 212
+
+
+state 203
+
+    (90) ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento . PUNTOYCOMA PARDER bloque
+
+    PUNTOYCOMA      shift and go to state 214
+
+
+state 204
+
+    (105) save -> SAVOO PARIZQ expresion COMA save_3 PARDER . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 215
+
+
+state 205
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER . LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+
+    LLAVEIZQ        shift and go to state 216
+
+
+state 206
+
+    (10) func_2 -> tipo ID . puntoNfx1 func_21
+    (6) puntoNfx1 -> . vacio
+    (102) vacio -> .
+
+    COMA            reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 218
+    puntoNfx1                      shift and go to state 217
+
+state 207
+
+    (101) arreglo -> ARROO tipo CORCHIZQ INTOO CORCHDER .
+
+    COMA            reduce using rule 101 (arreglo -> ARROO tipo CORCHIZQ INTOO CORCHDER .)
+    PARDER          reduce using rule 101 (arreglo -> ARROO tipo CORCHIZQ INTOO CORCHDER .)
+    PUNTOYCOMA      reduce using rule 101 (arreglo -> ARROO tipo CORCHIZQ INTOO CORCHDER .)
+
+
+state 208
+
+    (68) condicion_1 -> ORTHIS . bloque
+    (28) bloque -> . LLAVEIZQ bloque_1 LLAVEDER
+
+    LLAVEIZQ        shift and go to state 17
+
+    bloque                         shift and go to state 219
+
+state 209
+
+    (69) condicion_1 -> vacio .
+
+    PUNTOYCOMA      reduce using rule 69 (condicion_1 -> vacio .)
+
+
+state 210
+
+    (67) condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 220
+
+
+state 211
+
+    (108) get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .
+
+    ID              reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    LOOP            reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    IF              reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    WRITEOO         reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    SORTOO          reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    READOO          reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    SAVOO           reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    GETOO           reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    RETURNOO        reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 108 (get -> GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA .)
+
+
+state 212
+
+    (92) incremento -> var_id_validation INCMENOS . exp
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 221
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 213
+
+    (91) incremento -> var_id_validation INCMAS . exp
+    (61) exp -> . termino puntoN4 exp_1
+    (70) termino -> . factor puntoN5 termino_1
+    (75) factor -> . factor_1
+    (76) factor_1 -> . PARIZQ puntoN6 expresion PARDER puntoN7
+    (77) factor_1 -> . varcte
+    (83) varcte -> . var_id_validation
+    (84) varcte -> . llamada
+    (85) varcte -> . CTEINTOO
+    (86) varcte -> . CTEDECOO
+    (87) varcte -> . CTEWORDOO
+    (88) varcte -> . CHAROO
+    (89) var_id_validation -> . ID
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+
+    PARIZQ          shift and go to state 59
+    CTEINTOO        shift and go to state 74
+    CTEDECOO        shift and go to state 62
+    CTEWORDOO       shift and go to state 69
+    CHAROO          shift and go to state 68
+    ID              shift and go to state 70
+
+    varcte                         shift and go to state 83
+    var_id_validation              shift and go to state 64
+    llamada                        shift and go to state 66
+    termino                        shift and go to state 58
+    exp                            shift and go to state 222
+    factor                         shift and go to state 67
+    factor_1                       shift and go to state 60
+
+state 214
+
+    (90) ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA . PARDER bloque
+
+    PARDER          shift and go to state 223
+
+
+state 215
+
+    (105) save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .
+
+    ID              reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    LOOP            reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    IF              reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    WRITEOO         reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    SORTOO          reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    READOO          reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    SAVOO           reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    GETOO           reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    RETURNOO        reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 105 (save -> SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA .)
+
+
+state 216
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ . VAR vars func_3 LLAVEDER puntoNcont funcs
+
+    VAR             shift and go to state 224
+
+
+state 217
+
+    (10) func_2 -> tipo ID puntoNfx1 . func_21
+    (12) func_21 -> . COMA tipo ID puntoNfx1 func_21
+    (13) func_21 -> . vacio
+    (102) vacio -> .
+
+    COMA            shift and go to state 227
+    PARDER          reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 226
+    func_21                        shift and go to state 225
+
+state 218
+
+    (6) puntoNfx1 -> vacio .
+
+    COMA            reduce using rule 6 (puntoNfx1 -> vacio .)
+    PARDER          reduce using rule 6 (puntoNfx1 -> vacio .)
+
+
+state 219
+
+    (68) condicion_1 -> ORTHIS bloque .
+
+    PUNTOYCOMA      reduce using rule 68 (condicion_1 -> ORTHIS bloque .)
+
+
+state 220
+
+    (67) condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .
+
+    ID              reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    LOOP            reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    IF              reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    WRITEOO         reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    SORTOO          reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    READOO          reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    SAVOO           reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    GETOO           reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    RETURNOO        reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 67 (condicion -> IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA .)
+
+
+state 221
+
+    (92) incremento -> var_id_validation INCMENOS exp .
+
+    PUNTOYCOMA      reduce using rule 92 (incremento -> var_id_validation INCMENOS exp .)
+
+
+state 222
+
+    (91) incremento -> var_id_validation INCMAS exp .
+
+    PUNTOYCOMA      reduce using rule 91 (incremento -> var_id_validation INCMAS exp .)
+
+
+state 223
+
+    (90) ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER . bloque
+    (28) bloque -> . LLAVEIZQ bloque_1 LLAVEDER
+
+    LLAVEIZQ        shift and go to state 17
+
+    bloque                         shift and go to state 228
+
+state 224
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR . vars func_3 LLAVEDER puntoNcont funcs
+    (16) vars -> . var_1
+    (17) vars -> . vacio
+    (18) var_1 -> . tipo ID puntoN2 PUNTOYCOMA var_1
+    (19) var_1 -> . vacio
+    (102) vacio -> .
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+
+    ID              reduce using rule 102 (vacio -> .)
+    LOOP            reduce using rule 102 (vacio -> .)
+    IF              reduce using rule 102 (vacio -> .)
+    WRITEOO         reduce using rule 102 (vacio -> .)
+    SORTOO          reduce using rule 102 (vacio -> .)
+    READOO          reduce using rule 102 (vacio -> .)
+    SAVOO           reduce using rule 102 (vacio -> .)
+    GETOO           reduce using rule 102 (vacio -> .)
+    RETURNOO        reduce using rule 102 (vacio -> .)
+    LLAVEDER        reduce using rule 102 (vacio -> .)
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+
+    tipo                           shift and go to state 10
+    vars                           shift and go to state 229
+    vacio                          shift and go to state 12
+    var_1                          shift and go to state 16
+
+state 225
+
+    (10) func_2 -> tipo ID puntoNfx1 func_21 .
+
+    PARDER          reduce using rule 10 (func_2 -> tipo ID puntoNfx1 func_21 .)
+
+
+state 226
+
+    (13) func_21 -> vacio .
+
+    PARDER          reduce using rule 13 (func_21 -> vacio .)
+
+
+state 227
+
+    (12) func_21 -> COMA . tipo ID puntoNfx1 func_21
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+
+    tipo                           shift and go to state 230
+
+state 228
+
+    (90) ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .
+
+    ID              reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    LOOP            reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    IF              reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    WRITEOO         reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    SORTOO          reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    READOO          reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    SAVOO           reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    GETOO           reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    RETURNOO        reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+    LLAVEDER        reduce using rule 90 (ciclo -> LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque .)
+
+
+state 229
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars . func_3 LLAVEDER puntoNcont funcs
+    (14) func_3 -> . bloque_1
+    (15) func_3 -> . vacio
+    (29) bloque_1 -> . estatuto bloque_1
+    (30) bloque_1 -> . vacio
+    (102) vacio -> .
+    (31) estatuto -> . llamada PUNTOYCOMA
+    (32) estatuto -> . ciclo
+    (33) estatuto -> . asignacion
+    (34) estatuto -> . condicion
+    (35) estatuto -> . writoo
+    (36) estatuto -> . sort
+    (37) estatuto -> . read
+    (38) estatuto -> . save
+    (39) estatuto -> . get
+    (40) estatuto -> . retorno
+    (93) llamada -> . ID PARIZQ llamada_1 PARDER
+    (90) ciclo -> . LOOP PARIZQ asignacion expresion PUNTOYCOMA incremento PUNTOYCOMA PARDER bloque
+    (41) asignacion -> . var_id_validation IGUAL asignacion_1 PUNTOYCOMA
+    (67) condicion -> . IF PARIZQ expresion PARDER DOTHIS bloque condicion_1 PUNTOYCOMA
+    (59) writoo -> . WRITEOO PARIZQ writoo_1 PARDER PUNTOYCOMA
+    (103) sort -> . SORTOO PARIZQ ID PARDER PUNTOYCOMA
+    (104) read -> . READOO PARIZQ var_id_validation PARDER PUNTOYCOMA
+    (105) save -> . SAVOO PARIZQ expresion COMA save_3 PARDER PUNTOYCOMA
+    (108) get -> . GETOO PARIZQ get_2 COMA var_id_validation PARDER PUNTOYCOMA
+    (98) retorno -> . RETURNOO retorno_1 PUNTOYCOMA
+    (89) var_id_validation -> . ID
+
+    LLAVEDER        reduce using rule 102 (vacio -> .)
+    ID              shift and go to state 37
+    LOOP            shift and go to state 42
+    IF              shift and go to state 38
+    WRITEOO         shift and go to state 23
+    SORTOO          shift and go to state 21
+    READOO          shift and go to state 24
+    SAVOO           shift and go to state 43
+    GETOO           shift and go to state 39
+    RETURNOO        shift and go to state 36
+
+    func_3                         shift and go to state 231
+    writoo                         shift and go to state 22
+    ciclo                          shift and go to state 25
+    var_id_validation              shift and go to state 26
+    estatuto                       shift and go to state 27
+    llamada                        shift and go to state 28
+    condicion                      shift and go to state 29
+    retorno                        shift and go to state 30
+    save                           shift and go to state 31
+    sort                           shift and go to state 32
+    get                            shift and go to state 33
+    read                           shift and go to state 34
+    bloque_1                       shift and go to state 232
+    asignacion                     shift and go to state 40
+    vacio                          shift and go to state 233
+
+state 230
+
+    (12) func_21 -> COMA tipo . ID puntoNfx1 func_21
+
+    ID              shift and go to state 234
+
+
+state 231
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 . LLAVEDER puntoNcont funcs
+
+    LLAVEDER        shift and go to state 235
+
+
+state 232
+
+    (14) func_3 -> bloque_1 .
+
+    LLAVEDER        reduce using rule 14 (func_3 -> bloque_1 .)
+
+
+state 233
+
+    (15) func_3 -> vacio .
+    (30) bloque_1 -> vacio .
+
+  ! reduce/reduce conflict for LLAVEDER resolved using rule 15 (func_3 -> vacio .)
+    LLAVEDER        reduce using rule 15 (func_3 -> vacio .)
+
+  ! LLAVEDER        [ reduce using rule 30 (bloque_1 -> vacio .) ]
+
+
+state 234
+
+    (12) func_21 -> COMA tipo ID . puntoNfx1 func_21
+    (6) puntoNfx1 -> . vacio
+    (102) vacio -> .
+
+    COMA            reduce using rule 102 (vacio -> .)
+    PARDER          reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 218
+    puntoNfx1                      shift and go to state 236
+
+state 235
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER . puntoNcont funcs
+    (7) puntoNcont -> . vacio
+    (102) vacio -> .
+
+    VOO             reduce using rule 102 (vacio -> .)
+    INTOO           reduce using rule 102 (vacio -> .)
+    DECOO           reduce using rule 102 (vacio -> .)
+    WORDOO          reduce using rule 102 (vacio -> .)
+    CHAROO          reduce using rule 102 (vacio -> .)
+    BOOL            reduce using rule 102 (vacio -> .)
+    MAIN            reduce using rule 102 (vacio -> .)
+
+    puntoNcont                     shift and go to state 237
+    vacio                          shift and go to state 238
+
+state 236
+
+    (12) func_21 -> COMA tipo ID puntoNfx1 . func_21
+    (12) func_21 -> . COMA tipo ID puntoNfx1 func_21
+    (13) func_21 -> . vacio
+    (102) vacio -> .
+
+    COMA            shift and go to state 227
+    PARDER          reduce using rule 102 (vacio -> .)
+
+    vacio                          shift and go to state 226
+    func_21                        shift and go to state 239
+
+state 237
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont . funcs
+    (3) funcs -> . func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs
+    (4) funcs -> . vacio
+    (8) func_1 -> . tipo
+    (9) func_1 -> . VOO
+    (102) vacio -> .
+    (23) tipo -> . INTOO
+    (24) tipo -> . DECOO
+    (25) tipo -> . WORDOO
+    (26) tipo -> . CHAROO
+    (27) tipo -> . BOOL
+
+    VOO             shift and go to state 49
+    MAIN            reduce using rule 102 (vacio -> .)
+    INTOO           shift and go to state 8
+    DECOO           shift and go to state 15
+    WORDOO          shift and go to state 9
+    CHAROO          shift and go to state 13
+    BOOL            shift and go to state 14
+
+    funcs                          shift and go to state 240
+    tipo                           shift and go to state 47
+    func_1                         shift and go to state 48
+    vacio                          shift and go to state 50
+
+state 238
+
+    (7) puntoNcont -> vacio .
+
+    VOO             reduce using rule 7 (puntoNcont -> vacio .)
+    INTOO           reduce using rule 7 (puntoNcont -> vacio .)
+    DECOO           reduce using rule 7 (puntoNcont -> vacio .)
+    WORDOO          reduce using rule 7 (puntoNcont -> vacio .)
+    CHAROO          reduce using rule 7 (puntoNcont -> vacio .)
+    BOOL            reduce using rule 7 (puntoNcont -> vacio .)
+    MAIN            reduce using rule 7 (puntoNcont -> vacio .)
+
+
+state 239
+
+    (12) func_21 -> COMA tipo ID puntoNfx1 func_21 .
+
+    PARDER          reduce using rule 12 (func_21 -> COMA tipo ID puntoNfx1 func_21 .)
+
+
+state 240
+
+    (3) funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs .
+
+    MAIN            reduce using rule 3 (funcs -> func_1 ID puntoNfx PARIZQ func_2 PARDER LLAVEIZQ VAR vars func_3 LLAVEDER puntoNcont funcs .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 12 resolved using rule (vars -> vacio)
+WARNING: rejected rule (var_1 -> vacio) in state 12
+WARNING: reduce/reduce conflict in state 63 resolved using rule (factor_1 -> varcte)
+WARNING: rejected rule (retorno_1 -> varcte) in state 63
+WARNING: reduce/reduce conflict in state 233 resolved using rule (func_3 -> vacio)
+WARNING: rejected rule (bloque_1 -> vacio) in state 233
+WARNING: Rule (retorno_1 -> varcte) is never reduced

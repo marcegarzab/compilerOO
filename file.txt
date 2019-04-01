@@ -1,0 +1,41 @@
+startoo program1;
+vars
+intoo num1;
+intoo num2;
+intoo num3;
+
+funcs
+intoo myfunc(decoo dec1, intoo int1){
+vars
+intoo candy2;
+wordoo candy;
+
+num1 = 3;
+
+}
+
+
+main{
+ num1 = 10;
+
+ if(num1 < 0 & 5 < 4 ) dothis {
+
+
+ }
+ orthis{
+ 	num3 = num1 * (2+3*5) * num2 / 6 * 7 * 4 - 1;
+ };
+writeoo(num3);
+
+loop ( num1=23534; num1<10; num1 -= 4 + 4;){
+
+}
+
+
+readoo(num1);
+writeoo(num1);
+writeoo(num1 + 2);
+getoo(num1, num1);
+savoo(num1,'hola');
+
+}
